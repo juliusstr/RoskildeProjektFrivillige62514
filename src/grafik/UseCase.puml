@@ -1,0 +1,19 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+left to right direction
+
+:Ansvarlig: as Ansvarlig
+:Frivilig: as Frivilig
+:Person: as Person
+
+Person --> (Register som frivilig)
+Frivilig --> (Se vagtplan)
+Frivilig --> (Rediger kontakt oplysninger)
+Ansvarlig --> (Rediger i Frivilige oplysinnger)
+Ansvarlig --> (Slette frivilige)
+Ansvarlig --> (Tildele vagt til frivilig)
+Ansvarlig --> (Se vagtplan)
+Ansvarlig --> (Slet vagt)
+Ansvarlig --> (Opret en vagt)
+
+@enduml

@@ -1,0 +1,20 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+object Bod
+object Frivilig
+object Ansvarlig
+object Aktivtet
+object Vagtplan
+object Vagt
+object Person
+
+Person <|-- Ansvarlig
+Person <|-- Frivilig
+Bod -U-|> Aktivtet
+Ansvarlig "1" -- "1..*" Aktivtet
+Vagtplan "1" -- "1" Aktivtet
+Vagtplan "1" -- "1..*" Vagt
+Frivilig "1" -- "1..*" Vagt
+
+@enduml

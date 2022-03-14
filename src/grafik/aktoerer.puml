@@ -1,0 +1,10 @@
+@startuml
+'https://plantuml.com/object-diagram
+
+:Frivilig: as Frivilig
+actor Person
+actor Ansvarlig
+Person <|-- Frivilig
+Person <|-- Ansvarlig
+
+@enduml
