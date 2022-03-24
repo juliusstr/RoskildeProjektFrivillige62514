@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox prefHeight="0.0" prefWidth="600.0">
+         <children>
+            <Separator opacity="0.0" prefHeight="0.0" prefWidth="29.0" />
+            <Label prefHeight="17.0" prefWidth="140.0" text="Roskildefestigvalg 2022" />
+            <Label id="personBanner" alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="17.0" prefWidth="441.0" text="XXXXXXXXXXXXXXXX" />
+            <Separator opacity="0.0" prefHeight="23.0" prefWidth="43.0" />
+         </children>
+      </HBox>
+      <VBox prefHeight="408.0" prefWidth="600.0">
+         <children>
+            <MenuBar>
+              <menus>
+                  <Menu mnemonicParsing="false" text="Vagt plan" />
+                <Menu mnemonicParsing="false" text="Mine informationer" />
+              </menus>
+            </MenuBar>
+            <Pane prefHeight="360.0" prefWidth="600.0" />
+         </children>
+      </VBox>
+   </children>
+</VBox>

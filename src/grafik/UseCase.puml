@@ -15,5 +15,7 @@ Ansvarlig --> (Tildele vagt til frivilig)
 Ansvarlig --> (Se vagtplan)
 Ansvarlig --> (Slet vagt)
 Ansvarlig --> (Opret en vagt)
+Ansvarlig --> (Se mine Informationer)
+Frivilig --> (Se mine Informationer)
 
 @enduml
