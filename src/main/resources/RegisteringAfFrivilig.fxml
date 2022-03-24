@@ -7,13 +7,13 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="360.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="360.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="RegisteringAfFriviligController">
    <children>
       <AnchorPane prefHeight="31.0" prefWidth="647.0">
          <children>
@@ -49,22 +49,27 @@
             <Label text="Efternavn" GridPane.columnIndex="2" GridPane.rowIndex="2" />
             <Label text="Mobil TLF" GridPane.columnIndex="2" GridPane.rowIndex="3" />
             <Label text="Email" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-            <TextField GridPane.columnIndex="3" GridPane.rowIndex="3" />
-            <TextField GridPane.columnIndex="3" GridPane.rowIndex="4" />
-            <TextField GridPane.columnIndex="3" GridPane.rowIndex="1" />
-            <TextField GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <TextField fx:id="tlfNr" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+            <TextField fx:id="eMail" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+            <TextField fx:id="navn" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <TextField fx:id="efterNavn" GridPane.columnIndex="3" GridPane.rowIndex="2" />
             <Label text="Fødslesdato" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-            <DatePicker GridPane.columnIndex="3" GridPane.rowIndex="5" />
             <Label text="Password" GridPane.columnIndex="2" GridPane.rowIndex="6" />
             <Label text="Gentag password" GridPane.columnIndex="2" GridPane.rowIndex="7" />
-            <PasswordField GridPane.columnIndex="3" GridPane.rowIndex="6" />
-            <PasswordField GridPane.columnIndex="3" GridPane.rowIndex="7" />
+            <PasswordField fx:id="password1" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+            <PasswordField fx:id="password2" GridPane.columnIndex="3" GridPane.rowIndex="7" />
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="9">
                <children>
                   <Button mnemonicParsing="false" text="Tilbage" />
-                  <Button layoutX="275.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="140.0" text="Register" />
+                  <Button layoutX="275.0" mnemonicParsing="false" onMouseClicked="#register" prefHeight="25.0" prefWidth="140.0" text="Register" />
                </children>
             </AnchorPane>
+            <FlowPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="5">
+               <children>
+                  <DatePicker fx:id="bDay" />
+                  <Label text="   DD/MM/ÅÅÅÅ" />
+               </children>
+            </FlowPane>
          </children>
       </GridPane>
    </children>
