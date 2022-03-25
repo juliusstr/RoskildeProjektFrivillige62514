@@ -60,7 +60,7 @@
             <PasswordField fx:id="password2" GridPane.columnIndex="3" GridPane.rowIndex="7" />
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="9">
                <children>
-                  <Button mnemonicParsing="false" text="Tilbage" />
+                  <Button mnemonicParsing="false" onMouseClicked="#tilbage" text="Tilbage" />
                   <Button layoutX="275.0" mnemonicParsing="false" onMouseClicked="#register" prefHeight="25.0" prefWidth="140.0" text="Register" />
                </children>
             </AnchorPane>
