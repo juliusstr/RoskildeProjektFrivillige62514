@@ -15,7 +15,7 @@ import java.net.URL;
 import java.util.HashMap;
 
 public class GUI extends Application {
-    public HashMap<String, Person> personHashMap;
+
 
 
     public static void run(){
@@ -24,7 +24,6 @@ public class GUI extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        personHashMap = new HashMap<>();
         FXMLLoader loadrer = new FXMLLoader(getClass().getResource("login.fxml"));
         VBox box = loadrer.load();
         Scene logniSide = new Scene(box,box.getPrefWidth(), box.getPrefHeight());
