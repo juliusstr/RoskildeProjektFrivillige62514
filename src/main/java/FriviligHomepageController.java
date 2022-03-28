@@ -1,17 +1,14 @@
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Scene;
-import javafx.scene.control.Menu;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 
 public class FriviligHomepageController {
 
+    public Pane pane;
+    public Label currentUser;
+    public Label personRoskildeID;
     private GUI gui;
 
     public void logud(ActionEvent actionEvent) throws IOException {
@@ -20,5 +17,9 @@ public class FriviligHomepageController {
 
     public void setGui(GUI gui) {
         this.gui = gui;
+    }
+
+    public void setFriviligeInformationerScene(ActionEvent actionEvent) throws IOException {//todo skift hele scenen
+        gui.setFriviligeInformationerScene();
     }
 }

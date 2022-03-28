@@ -75,4 +75,22 @@ public class GUI extends Application {
         stage.setScene(login);
     }
 
+    public void setAnsvarligHomepageScene(Person person) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("AnsvarligHomepage.fxml"));
+        VBox box = loader.load();
+        AnsvarligHomepsgeController ansvarligHomepsgeController = loader.getController();
+        ansvarligHomepsgeController.setGUI(this);
+        Scene ansvarligHomepageScene = new Scene(box,box.getPrefWidth(), box.getPrefHeight());
+        stage.setScene(ansvarligHomepageScene);
+    }
+
+
+    public void setFriviligeInformationerScene() throws IOException {//todo pass den person som er loget ind
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FriviligMineInformationer.fxml"));
+        VBox box = loader.load();
+         FriviligMineInformationerController friviligMineInformationerController = loader.getController();
+        friviligMineInformationerController.setGUI(this);
+        Scene friviligMineInformationerScene = new Scene(box,box.getPrefWidth(), box.getPrefHeight());
+        stage.setScene(friviligMineInformationerScene);
+    }
 }

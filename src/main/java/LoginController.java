@@ -24,19 +24,20 @@ public class LoginController {
         try {
             person = Runner.personHashMap.get(brugerNavn.getText());
             if (person.getPassword().equals(password.getText())){
-                if (person.getPassword().charAt(0) == 'A'){
-                    // todo login som ansvarlig
+                if (person.getRoskildeId().charAt(0) == 'A'){
+                    gui.setAnsvarligHomepageScene(person);
                 } else {
                     gui.setFriviligHomepageScene(person);
                 }
             } else {
-
+                brugerNavn.setText("");
+                password.setText("");
+                GUI.infoBox(null, "Ugyldigt kode og eller ID");
             }
         } catch (NullPointerException e){
-            e.printStackTrace();
             brugerNavn.setText("");
             password.setText("");
-            GUI.infoBox(null, "Forkert kode eller ID");
+            GUI.infoBox(null, "Ugyldigt kode og eller ID");
         }
 
     }
