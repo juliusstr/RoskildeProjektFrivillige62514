@@ -31,30 +31,31 @@ public class RegisteringAfFriviligController {
 
     public void register(MouseEvent mouseEvent) throws IOException {
         boolean bNavn = true;
+        String error = "";
         if(!Pattern.matches("^[A-ZÆØÅ]{1}[a-zæøåü\\-]*", navn.getText())){
-            System.out.println("fejl i navn"); //todo fjern mig og informer bruger om fejlen
+            error += "Fejl i navn\nNavn skal starte med store bogstaver, og må kun indhold alfabetiske karakter og \"-\"";
             bNavn = false;
         }
 
         boolean bEfternavn = true;
         if(!Pattern.matches("^[a-zA-ZæøåÆØÅü \\-]+", efterNavn.getText())){
-            System.out.println("fejl i efternavn");//todo fjern mig og informer bruger om fejlen
+            error += "Fejl i efternavn\nEfternavn må kun indhold alfabetiske karakter og \" \", \"-\"";
             bEfternavn = false;
         }
         boolean bTlfNr = true;
         if (!Pattern.matches("^[+]?[0-9]+", tlfNr.getText())){
-            System.out.println("fejl i tlf");//todo fjern mig og informer bruger om fejlen
+            error += "Fejl i telefonnummer\nTelefonnummer må kun bestå af tal og kan indholde \"+\" efterfulgt af landekode";
             bTlfNr = false;
         }
         boolean bEMail = true;
         if (!Pattern.matches("^[A-Za-z0-9._%\\-]+[@]{1}[A-Za-z0-9.-]+[.]{1}[a-zA-Z]{2,4}", eMail.getText())){
-            System.out.println("fejl i email");//todo fjern mig og informer bruger om fejlen
+            error += "Fejl i email\nEmail skal være gyldig email format. fx \"xxxx@xxxx.xxx\"";
             bEMail = false;
         }
         boolean bBDay = true;
         try {
             if (bDay.getValue().isAfter(LocalDate.now().minusYears(18))){
-                System.out.println("Er ikke gammel nok");//todo fjern mig og informer bruger om fejlen
+                error += "Du skal være over 18år";
                 bBDay = false;
             }
         } catch (NullPointerException e){
@@ -62,15 +63,11 @@ public class RegisteringAfFriviligController {
         }
         boolean bPassword = true;
         if (!Pattern.matches("^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[^A-Za-z0-9]).{8,}", password1.getText())) {
-            System.out.println("fejl i password1");//todo fjern mig og informer bruger om fejlen
-            bPassword = false;
-        }
-        if (!Pattern.matches("^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[^A-Za-z0-9]).{8,}", password2.getText())) {
-            System.out.println("fejl i password2");//todo fjern mig og informer bruger om fejlen
+            error += "Fejl i password\nPassword skal indhold et stort bogstav, et småt bogstav, et tal, et special tegn og være mindst 8 karakter langt fx\"Aa1!xxxx\"";
             bPassword = false;
         }
         if (!password1.getText().equals(password2.getText())) {
-            System.out.println("passwords er ikke ens"); //todo fjern mig og informer bruger om fejlen
+            error += "Passwords er ikke ens\nBegge password felter skal indhold samme password";
             bPassword = false;
         }
         if (bNavn && bEfternavn && bTlfNr && bEMail && bBDay && bPassword) {
