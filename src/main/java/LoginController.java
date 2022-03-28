@@ -17,6 +17,7 @@ public class LoginController {
     @FXML
     public TextField brugerNavn;
     public TextField password;
+    private GUI gui;
 
     public void clickedMouseLogin(MouseEvent mouseEvent) throws IOException {
         Person person = null;
@@ -26,29 +27,26 @@ public class LoginController {
                 if (person.getPassword().charAt(0) == 'A'){
                     // todo login som ansvarlig
                 } else {
-                    FXMLLoader loadrer = new FXMLLoader(getClass().getResource("FriviligHomepage.fxml"));
-                    VBox box = loadrer.load();
-                    ((Label) ((HBox) box.getChildren().get(0)).getChildren().get(2)).setText(person.getRoskildeId() + " - " + person.getNavn() + " " + person.getEfternavn());
-                    Scene friviligHomePage = new Scene(box, box.getPrefWidth(), box.getPrefHeight());
-                    Stage primaryStage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();//todo spg til christian
-                    primaryStage.setScene(friviligHomePage);
+                    gui.setFriviligHomepageScene(person);
                 }
             } else {
 
             }
         } catch (NullPointerException e){
             e.printStackTrace();
-            //todo prompt bruger for nyt brugernanv og password da de ikke matcher
+            brugerNavn.setText("");
+            password.setText("");
+            GUI.infoBox(null, "Forkert kode eller ID");
         }
 
     }
 
     public void clickedMouseRegisterSomFirvilig(MouseEvent mouseEvent) throws IOException {
         //System.err.println(this.getClass().getName());
-        FXMLLoader loadrer = new FXMLLoader(getClass().getResource("RegisteringAfFrivilig.fxml"));
-        VBox box = loadrer.load();
-        Scene registeringAfFriviligScene = new Scene(box,box.getPrefWidth(), box.getPrefHeight());
-        Stage primaryStage = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();//todo spg til christian
-        primaryStage.setScene(registeringAfFriviligScene);
+        gui.setRegisteringAfFriviligScene();
+    }
+
+    public void setGUI(GUI gui) {
+        this.gui = gui;
     }
 }

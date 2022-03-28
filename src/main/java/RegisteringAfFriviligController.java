@@ -25,8 +25,7 @@ public class RegisteringAfFriviligController {
     public DatePicker bDay;
     public PasswordField password1;
     public PasswordField password2;
-
-
+    private GUI gui;
 
 
     public void register(MouseEvent mouseEvent) throws IOException {
@@ -77,7 +76,7 @@ public class RegisteringAfFriviligController {
             System.out.println(navn.getText() + "\n" + efterNavn.getText() + "\n" + tlfNr.getText() + "\n" + eMail.getText() + "\n" + bDay.getValue().toString());
             Runner.personHashMap.put("F" + (Runner.personHashMap.size() + 1), new Person(navn.getText(), efterNavn.getText(), tlfNr.getText(), eMail.getText(), bDay.getValue().toString(), "F" + (Runner.personHashMap.size() + 1), password1.getText()));
             GUI.infoBox("Dit brugerID er:\n" + "F" + Runner.personHashMap.size(), "Du er nu registret.");
-            goToLoginScene(mouseEvent);
+            gui.setLoginScene();
         } else {
             password1.setText("");
             password2.setText("");
@@ -86,14 +85,10 @@ public class RegisteringAfFriviligController {
     }
 
     public void tilbage(MouseEvent mouseEvent) throws IOException {
-        goToLoginScene(mouseEvent);
+        gui.setLoginScene();
     }
 
-    private void goToLoginScene(MouseEvent mouseEvent) throws IOException {
-        FXMLLoader loadrer = new FXMLLoader(getClass().getResource("login.fxml"));
-        VBox box = loadrer.load();
-        Scene login = new Scene(box,box.getPrefWidth(), box.getPrefHeight());
-        Stage primaryStage = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();//todo spg til christian
-        primaryStage.setScene(login);
+    public void setGUI(GUI gui) {
+        this.gui = gui;
     }
 }
