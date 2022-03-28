@@ -20,6 +20,7 @@ public class FriviligHomepageController {
     }
 
     public void setFriviligeInformationerScene(ActionEvent actionEvent) throws IOException {//todo skift hele scenen
-        gui.setFriviligeInformationerScene();
+        Person person = Runner.personHashMap.get(currentUser.getText().split(" ")[0]);
+        gui.setFriviligeInformationerScene(person);
     }
 }
