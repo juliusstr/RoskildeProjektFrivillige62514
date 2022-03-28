@@ -14,8 +14,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-
-<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FriviligMineInformationerController">
+<VBox xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FriviligMineInformationerController">
    <children>
       <HBox prefHeight="0.0" prefWidth="600.0">
          <children>
@@ -30,7 +29,7 @@
             <Menu mnemonicParsing="false" text="Vagter" />
             <Menu fx:id="logUd" mnemonicParsing="false" text="Min Konto">
                <items>
-                  <MenuItem mnemonicParsing="false" onAction text="Mine informationer" />
+                  <MenuItem mnemonicParsing="false" text="Mine informationer" />
                   <MenuItem mnemonicParsing="false" onAction="#logud" text="logUd" />
                </items>
             </Menu>
@@ -63,13 +62,13 @@
             <Label text="Efternavn" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label text="Mobil TLF" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label text="Email" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <TextField GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <TextField GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <TextField fx:id="tlfNr" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <TextField fx:id="email" GridPane.columnIndex="2" GridPane.rowIndex="3" />
             <Label text="RoskildeID" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="140.0" text="Rediger" wrapText="true" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-            <TextField GridPane.columnIndex="2" />
-            <TextField GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="140.0" text="Gem" GridPane.columnIndex="4" GridPane.rowIndex="6" />
+            <Button fx:id="redigerBtn" onAction="#redigerInfo" mnemonicParsing="false" prefHeight="25.0" prefWidth="140.0" text="Rediger" wrapText="true" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+            <TextField fx:id="navn" GridPane.columnIndex="2" />
+            <TextField fx:id="efternavn" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Button fx:id="gemBnt" onAction="#gemInfo" mnemonicParsing="false" prefHeight="25.0" prefWidth="140.0" text="Gem" GridPane.columnIndex="4" GridPane.rowIndex="6" />
             <Label fx:id="personRoskildeID" prefHeight="17.0" prefWidth="367.0" text="XXXXXXXXX" GridPane.columnIndex="2" GridPane.rowIndex="4" />
          </children>
       </GridPane>

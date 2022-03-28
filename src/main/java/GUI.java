@@ -85,11 +85,12 @@ public class GUI extends Application {
     }
 
 
-    public void setFriviligeInformationerScene() throws IOException {//todo pass den person som er loget ind
+    public void setFriviligeInformationerScene(Person person) throws IOException {//todo pass den person som er loget ind
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FriviligMineInformationer.fxml"));
         VBox box = loader.load();
          FriviligMineInformationerController friviligMineInformationerController = loader.getController();
         friviligMineInformationerController.setGUI(this);
+        friviligMineInformationerController.preLoad(person);
         Scene friviligMineInformationerScene = new Scene(box,box.getPrefWidth(), box.getPrefHeight());
         stage.setScene(friviligMineInformationerScene);
     }

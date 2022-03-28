@@ -20,6 +20,16 @@ public class Person implements Serializable {
         this.password = password;
     }
 
+    public Person(Person person){
+        this.navn = person.navn;
+        this.efternavn = person.efternavn;
+        this.tlfNr = person.tlfNr;
+        this.eMail = person.eMail;
+        this.bDay = person.bDay;
+        this.roskildeId = person.roskildeId;
+        this.password = person.password;
+    }
+
     public String getPassword() {
         return password;
     }
@@ -34,5 +44,13 @@ public class Person implements Serializable {
 
     public String getEfternavn() {
         return efternavn;
+    }
+
+    public String getTlfNr() {
+        return tlfNr;
+    }
+
+    public String getEMail() {
+        return eMail;
     }
 }
