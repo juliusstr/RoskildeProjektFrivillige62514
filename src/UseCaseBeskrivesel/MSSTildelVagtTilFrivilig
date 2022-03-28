@@ -1,17 +1,16 @@
-Main Success Scenario for til del vagt til frivillig.
+Main Success Scenario for tildeling af vagt til frivillig:
 
-1 Intast login oplysninger
-2 Vælg aktivitet tapen
-3 vælg aktiviteten
-4//todo forsæt her
-5
-6
-7
+1 Brugeren Kører application (RoskildeProjekt)
+2 Application viser Login fældeterne
+3 Brugeren Indtast login oplysninger
+4 Application viser AnsvarligHomepage
+5 Brugeren vælger fra menubaren fældet "vagter" og undermenuen "tildel frivillig vagter"
+6 
+
+4a.1 Brugeren er ikke ansvarlig - Application viser FriviligHomepage.
+4a.2 Brugeren er ansvarlig men application viser FriviligHomepage - ???? kontakt en anden ansvarlig og får ham til at gøre dig ansvarlig ????
 
 
-2a.1 Ingen aktivetes tap. Du er ikke ansvarlig. Kontakt en ansvarlig.
-3a.1 Findes dne ønskede aktiviet ikke. klik på opret aktivit.
-3a.2 Udfyld aktivites information.
 
 
 
