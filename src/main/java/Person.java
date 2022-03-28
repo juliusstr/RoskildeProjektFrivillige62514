@@ -6,11 +6,11 @@ public class Person implements Serializable {
     private String efternavn;
     private String tlfNr;
     private String eMail;
-    private Date bDay;
+    private String bDay;
     private String roskildeId;
     private String password;
 
-    public Person(String navn, String efternavn, String tlfNr, String eMail, Date bDay, String roskildeId, String password) {
+    public Person(String navn, String efternavn, String tlfNr, String eMail, String bDay, String roskildeId, String password) {
         this.navn = navn;
         this.efternavn = efternavn;
         this.tlfNr = tlfNr;
@@ -18,5 +18,21 @@ public class Person implements Serializable {
         this.bDay = bDay;
         this.roskildeId = roskildeId;
         this.password = password;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getRoskildeId(){
+        return roskildeId;
+    }
+
+    public String getNavn() {
+        return navn;
+    }
+
+    public String getEfternavn() {
+        return efternavn;
     }
 }

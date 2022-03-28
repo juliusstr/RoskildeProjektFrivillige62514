@@ -3,6 +3,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
 import javafx.scene.control.TextField;
@@ -30,7 +31,14 @@ public class GUI extends Application {
         stage.setScene(logniSide);
         stage.setResizable(false);
         stage.show();
-
-
     }
+
+    public static void infoBox(String infoMessage, String titleBar) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        //alert.setTitle(titleBar);
+        alert.setHeaderText(titleBar);
+        alert.setContentText(infoMessage);
+        alert.showAndWait();
+    }
+
 }

@@ -24,10 +24,10 @@
             <Separator opacity="0.0" prefHeight="47.0" prefWidth="280.0" />
             <VBox prefHeight="221.0" prefWidth="318.0">
                <children>
-                  <Label fx:id="label" alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="0.0" prefWidth="556.0" text="BrugerNavn" />
-                  <TextField prefHeight="25.0" prefWidth="479.0" />
+                  <Label alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="0.0" prefWidth="556.0" text="BrugerID" />
+                  <TextField fx:id="brugerNavn" prefHeight="25.0" prefWidth="479.0" />
                   <Label alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="597.0" text="Password" />
-                  <PasswordField />
+                  <PasswordField fx:id="password" />
                   <Button alignment="TOP_CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#clickedMouseLogin" prefHeight="25.0" prefWidth="575.0" text="Log Ind" />
                   <Separator opacity="0.0" orientation="VERTICAL" prefHeight="206.0" prefWidth="15.0" />
                   <Button mnemonicParsing="false" onMouseClicked="#clickedMouseRegisterSomFirvilig" prefHeight="25.0" prefWidth="320.0" text="Register som frivilig" />
