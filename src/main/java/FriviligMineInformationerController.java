@@ -53,8 +53,47 @@ public class FriviligMineInformationerController {
 
     public void gemInfo(ActionEvent actionEvent) {
         Person person = Runner.personHashMap.get(personRoskildeID.getText().split(" ")[0]);
-        if (Pattern.matches("^[A-ZÆØÅ]{1}[a-zæøåü\\-]*", navn.getText())){
-
+        boolean bNavn  = true;
+        if (!Pattern.matches(RegisteringAfFriviligController.navnRegex, navn.getText())){
+            bNavn = false;
         }
+        boolean bEfternavn = true;
+        if (!Pattern.matches(RegisteringAfFriviligController.efternavnRegex, efternavn.getText())){
+            bEfternavn = false;
+        }
+        boolean bTlfNr = true;
+        if (!Pattern.matches(RegisteringAfFriviligController.tlfNrRegex, tlfNr.getText())){
+            bTlfNr = false;
+        }
+        boolean bEMail = true;
+        if (!Pattern.matches(RegisteringAfFriviligController.eMailRegex, email.getText())){
+            bEMail = false;
+        }
+
+        if (bNavn && bEfternavn && bTlfNr && bEMail){
+            person.setNavn(navn.getText());
+            person.setEfternavn(efternavn.getText());
+            person.setTlfNr(tlfNr.getText());
+            person.setEMail(email.getText());
+        } else {
+            String error = "";
+            if (!bNavn) {
+                error += "Fejl i navn:\nNavn skal starte med store bogstaver, og må kun indhold alfabetiske karakter og \"-\"\n\r";
+            }
+            if (!bEfternavn){
+                error += "Fejl i efternavn:\nEfternavn må kun indhold alfabetiske karakter og \" \", \"-\"\n\r";
+            }
+            if (!bTlfNr){
+                error += "Fejl i telefonnummer:\nTelefonnummer må kun bestå af tal og kan indhold \"+\" efterfulgt af landekode\n\r";
+            }
+            if (!bEMail){
+                error += "Fejl i email:\nEmail skal være gyldig email format. fx \"xxxx@xxxx.xxx\"\n\r";
+            }
+            GUI.infoBox(error,"Fejl i redigering af person informationer");
+        }
+        gemBnt.setVisible(false);
+        redigerBtn.setDisable(false);
+
+
     }
 }

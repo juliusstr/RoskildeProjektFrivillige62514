@@ -80,12 +80,13 @@ public class GUI extends Application {
         VBox box = loader.load();
         AnsvarligHomepsgeController ansvarligHomepsgeController = loader.getController();
         ansvarligHomepsgeController.setGUI(this);
+        ((Label) ((HBox) box.getChildren().get(0)).getChildren().get(2)).setText(person.getRoskildeId() + " - " + person.getNavn() + " " + person.getEfternavn());
         Scene ansvarligHomepageScene = new Scene(box,box.getPrefWidth(), box.getPrefHeight());
         stage.setScene(ansvarligHomepageScene);
     }
 
 
-    public void setFriviligeInformationerScene(Person person) throws IOException {//todo pass den person som er loget ind
+    public void setFriviligeInformationerScene(Person person) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FriviligMineInformationer.fxml"));
         VBox box = loader.load();
          FriviligMineInformationerController friviligMineInformationerController = loader.getController();

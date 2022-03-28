@@ -53,4 +53,20 @@ public class Person implements Serializable {
     public String getEMail() {
         return eMail;
     }
+
+    public void setNavn(String text) {
+        navn = text;
+    }
+
+    public void setEfternavn(String text) {
+        efternavn = text;
+    }
+
+    public void setTlfNr(String text) {
+        tlfNr = text;
+    }
+
+    public void setEMail(String text) {
+        eMail = text;
+    }
 }
