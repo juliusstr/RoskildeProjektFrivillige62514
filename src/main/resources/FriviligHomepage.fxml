@@ -26,11 +26,12 @@
                 <Menu mnemonicParsing="false" text="Vagter" />
                   <Menu fx:id="logUd" mnemonicParsing="false" text="Min Konto">
                      <items>
-                      <MenuItem mnemonicParsing="false" onAction="#logud" text="logUd" />
+                         <MenuItem mnemonicParsing="false" onAction="#setFriviligeInformationerScene" text="Mine informationer" />
+                        <MenuItem mnemonicParsing="false" onAction="#logud" text="logUd" />
                      </items></Menu>
               </menus>
             </MenuBar>
-            <Pane prefHeight="360.0" prefWidth="600.0" />
+            <Pane prefHeight="360.0" prefWidth="600.0" fx:id="pane"/>
          </children>
       </VBox>
    </children>
