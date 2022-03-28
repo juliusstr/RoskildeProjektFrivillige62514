@@ -80,7 +80,7 @@ public class RegisteringAfFriviligController {
         } else {
             password1.setText("");
             password2.setText("");
-            GUI.infoBox(error,"Fejl");
+            GUI.infoBox(error,"Fejl i registration");
             //todo informer bruger ome fejl i registering
         }
     }
