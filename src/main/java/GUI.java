@@ -12,8 +12,7 @@ import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.util.HashMap;
 
@@ -29,6 +28,7 @@ public class GUI extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         this.stage=stage;
+
         FXMLLoader loadrer = new FXMLLoader(getClass().getResource("login.fxml"));
         VBox box = loadrer.load();
         Scene logniSide = new Scene(box,box.getPrefWidth(), box.getPrefHeight());
@@ -36,6 +36,19 @@ public class GUI extends Application {
         loginController.setGUI(this);
         stage.setScene(logniSide);
         stage.setResizable(false);
+        stage.setOnCloseRequest(event -> {
+            try {
+                System.out.println("Stage is closing");
+                FileOutputStream fos = new FileOutputStream("person.ser");
+                ObjectOutputStream oos = new ObjectOutputStream(fos);
+                oos.writeObject(Runner.personHashMap);
+                oos.close();
+            } catch (Exception e){
+                e.printStackTrace();
+                System.out.println("Kunne ikke gemme fil. Du er fucked");
+            }
+
+        });
         stage.show();
     }
 
@@ -95,4 +108,6 @@ public class GUI extends Application {
         Scene friviligMineInformationerScene = new Scene(box,box.getPrefWidth(), box.getPrefHeight());
         stage.setScene(friviligMineInformationerScene);
     }
+
+
 }
