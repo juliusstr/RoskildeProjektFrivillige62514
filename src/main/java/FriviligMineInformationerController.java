@@ -93,7 +93,9 @@ public class FriviligMineInformationerController {
         }
         gemBnt.setVisible(false);
         redigerBtn.setDisable(false);
-
-
+        navn.setDisable(true);
+        efternavn.setDisable(true);
+        tlfNr.setDisable(true);
+        email.setDisable(true);
     }
 }
