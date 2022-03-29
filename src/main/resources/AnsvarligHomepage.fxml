@@ -26,6 +26,7 @@
                 <Menu mnemonicParsing="false" text="Vagter" />
                   <Menu fx:id="logUd" mnemonicParsing="false" text="Min Konto">
                      <items>
+                         <MenuItem mnemonicParsing="false" onAction="#mineInformationer" text="Mine Informationer" />
                          <MenuItem mnemonicParsing="false" onAction="#logud" text="logUd" />
                      </items></Menu>
               </menus>

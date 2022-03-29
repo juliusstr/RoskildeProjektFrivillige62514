@@ -7,7 +7,7 @@ import javafx.scene.control.Tooltip;
 import java.io.IOException;
 import java.util.regex.Pattern;
 
-public class FriviligMineInformationerController {
+public class AnsvarligMineInformationerController {
     public TextField navn;
     public TextField efternavn;
     public TextField tlfNr;
@@ -22,7 +22,7 @@ public class FriviligMineInformationerController {
         this.gui = gui;
     }
 
-    public void preLoad(Person person){
+    public void preLoad(Person person) {
         navn.setText(person.getNavn());
         efternavn.setText(person.getEfternavn());
         tlfNr.setText(person.getTlfNr());
@@ -80,7 +80,8 @@ public class FriviligMineInformationerController {
             person.setEfternavn(efternavn.getText());
             person.setTlfNr(tlfNr.getText());
             person.setEMail(email.getText());
-            gui.setFriviligeInformationerScene(person);
+
+            gui.setAnsvarligMineInformationer(person);
         } else {
             String error = "";
             if (!bNavn) {

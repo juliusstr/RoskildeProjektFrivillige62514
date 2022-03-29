@@ -110,4 +110,14 @@ public class GUI extends Application {
     }
 
 
+    public void setAnsvarligMineInformationer(Person person) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("AnsvarligMineInformationer.fxml"));
+        VBox box = loader.load();
+        AnsvarligMineInformationerController controller = loader.getController();
+        controller.setGUI(this);
+        ((Label) ((HBox) box.getChildren().get(0)).getChildren().get(2)).setText(person.getRoskildeId() + " - " + person.getNavn() + " " + person.getEfternavn());
+        controller.preLoad(person);
+        Scene scene = new Scene(box,box.getPrefWidth(), box.getPrefHeight());
+        stage.setScene(scene);
+    }
 }
