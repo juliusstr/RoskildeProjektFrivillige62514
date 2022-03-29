@@ -37,17 +37,7 @@ public class GUI extends Application {
         stage.setScene(logniSide);
         stage.setResizable(false);
         stage.setOnCloseRequest(event -> {
-            try {
-                System.out.println("Stage is closing");
-                FileOutputStream fos = new FileOutputStream("person.ser");
-                ObjectOutputStream oos = new ObjectOutputStream(fos);
-                oos.writeObject(Runner.personHashMap);
-                oos.close();
-            } catch (Exception e){
-                e.printStackTrace();
-                System.out.println("Kunne ikke gemme fil. Du er fucked");
-            }
-
+            DatabaseLink.savePersonData("person.ser");
         });
         stage.show();
     }

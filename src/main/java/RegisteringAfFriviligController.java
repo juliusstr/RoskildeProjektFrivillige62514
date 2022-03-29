@@ -78,8 +78,8 @@ public class RegisteringAfFriviligController {
         }
         if (bNavn && bEfternavn && bTlfNr && bEMail && bBDay && bPassword) {
             System.out.println(navn.getText() + "\n" + efterNavn.getText() + "\n" + tlfNr.getText() + "\n" + eMail.getText() + "\n" + bDay.getValue().toString());
-            Runner.personHashMap.put("F" + (Runner.personHashMap.size() + 1), new Person(navn.getText(), efterNavn.getText(), tlfNr.getText(), eMail.getText(), bDay.getValue().toString(), "F" + (Runner.personHashMap.size() + 1), password1.getText()));
-            GUI.infoBox("Dit brugerID er:\n" + "F" + Runner.personHashMap.size(), "Du er nu registret.");
+            DatabaseLink.personHashMap.put("F" + (DatabaseLink.personHashMap.size() + 1), new Person(navn.getText(), efterNavn.getText(), tlfNr.getText(), eMail.getText(), bDay.getValue().toString(), "F" + (DatabaseLink.personHashMap.size() + 1), password1.getText()));
+            GUI.infoBox("Dit brugerID er:\n" + "F" + DatabaseLink.personHashMap.size(), "Du er nu registret.");
             gui.setLoginScene();
         } else {
             password1.setText("");

@@ -57,7 +57,7 @@ public class FriviligMineInformationerController {
     }
 
     public void gemInfo(ActionEvent actionEvent) throws IOException {
-        Person person = Runner.personHashMap.get(personRoskildeID.getText().split(" ")[0]);
+        Person person = DatabaseLink.personHashMap.get(personRoskildeID.getText().split(" ")[0]);
         boolean bNavn  = true;
         if (!Pattern.matches(RegisteringAfFriviligController.navnRegex, navn.getText())){
             bNavn = false;

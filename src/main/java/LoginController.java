@@ -22,7 +22,7 @@ public class LoginController {
     public void clickedMouseLogin(MouseEvent mouseEvent) throws IOException {
         Person person = null;
         try {
-            person = Runner.personHashMap.get(brugerNavn.getText());
+            person = DatabaseLink.personHashMap.get(brugerNavn.getText());
             if (person.getPassword().equals(password.getText())){
                 if (person.getRoskildeId().charAt(0) == 'A'){
                     gui.setAnsvarligHomepageScene(person);

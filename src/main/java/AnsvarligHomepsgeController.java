@@ -19,7 +19,7 @@ public class AnsvarligHomepsgeController {
 
 
     public void mineInformationer(ActionEvent actionEvent) throws IOException {//todo skift scene
-        Person person = Runner.personHashMap.get(currentUser.getText().split(" ")[0]);
+        Person person = DatabaseLink.personHashMap.get(currentUser.getText().split(" ")[0]);
         gui.setAnsvarligMineInformationer(person);
     }
 }

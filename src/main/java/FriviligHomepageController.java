@@ -20,7 +20,7 @@ public class FriviligHomepageController {
     }
 
     public void setFriviligeInformationerScene(ActionEvent actionEvent) throws IOException {
-        Person person = Runner.personHashMap.get(currentUser.getText().split(" ")[0]);
+        Person person = DatabaseLink.personHashMap.get(currentUser.getText().split(" ")[0]);
         gui.setFriviligeInformationerScene(person);
     }
 }
