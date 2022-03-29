@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AnsvarligHomepsgeController">
+   <children>
+      <HBox prefHeight="0.0" prefWidth="600.0">
+         <children>
+            <Separator opacity="0.0" prefHeight="0.0" prefWidth="29.0" />
+            <Label prefHeight="17.0" prefWidth="140.0" text="Roskildefestigvalg 2022" />
+            <Label id="personBanner" fx:id="currentUser" alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="17.0" prefWidth="441.0" text="XXXXXXXXXXXXXXXX" />
+            <Separator opacity="0.0" prefHeight="23.0" prefWidth="43.0" />
+         </children>
+      </HBox>
+      <VBox prefHeight="408.0" prefWidth="600.0">
+         <children>
+            <MenuBar>
+              <menus>
+                <Menu mnemonicParsing="false" text="Vagter" />
+                  <Menu fx:id="logUd" mnemonicParsing="false" text="Min Konto">
+                     <items>
+                         <MenuItem mnemonicParsing="false" onAction="#logud" text="logUd" />
+                     </items></Menu>
+              </menus>
+            </MenuBar>
+            <AnchorPane prefHeight="358.0" prefWidth="600.0">
+               <children>
+                  <ListView layoutX="14.0" layoutY="41.0" prefHeight="303.0" prefWidth="573.0" />
+                  <TextField layoutX="14.0" layoutY="8.0" prefHeight="25.0" prefWidth="573.0" promptText="Søg..." />
+               </children></AnchorPane>
+         </children>
+      </VBox>
+   </children>
+</VBox>
