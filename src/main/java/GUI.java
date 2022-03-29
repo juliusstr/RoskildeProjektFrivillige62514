@@ -88,7 +88,6 @@ public class GUI extends Application {
         stage.setScene(ansvarligHomepageScene);
     }
 
-
     public void setFriviligeInformationerScene(Person person) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FriviligMineInformationer.fxml"));
         VBox box = loader.load();
