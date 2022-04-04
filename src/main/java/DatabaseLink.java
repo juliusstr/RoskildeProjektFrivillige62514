@@ -5,6 +5,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class DatabaseLink {
     public static HashMap<String, Person> personHashMap;
@@ -69,5 +70,16 @@ public class DatabaseLink {
             return false;
         }
         return true;
+    }
+
+    public static Person getPersonFromID(String iD){
+        for(Map.Entry<String, Person> entry : DatabaseLink.personHashMap.entrySet()) {
+            String key = entry.getKey();
+            if (key.equals(iD)) {
+                Person person = entry.getValue();
+                return person;
+            }
+        }
+        return null;
     }
 }
