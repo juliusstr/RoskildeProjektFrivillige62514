@@ -51,7 +51,7 @@ public class DatabaseLink {
         } catch (Exception e){
             e.printStackTrace();
             aktivteter = new ArrayList<>();
-            System.out.println("Kunne ikke gemme akt fil der er nu ingen akt");
+            System.out.println("Kunne ikke loade akt fil der er nu ingen akt");
             return false;
         }
         return true;

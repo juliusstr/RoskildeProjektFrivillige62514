@@ -116,6 +116,7 @@ public class GUI extends Application {
         VBox box = loader.load();
         AnsvarligVagterController controller = loader.getController();
         controller.setGUI(this);
+        controller.preeload();
         ((Label) ((HBox) box.getChildren().get(0)).getChildren().get(2)).setText(person.getRoskildeId() + " - " + person.getNavn() + " " + person.getEfternavn());
         Scene scene = new Scene(box,box.getPrefWidth(), box.getPrefHeight());
         stage.setScene(scene);

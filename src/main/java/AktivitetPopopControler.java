@@ -25,31 +25,45 @@ public class AktivitetPopopControler {
         //hent info
         boolean titelB = false;
         String titel = "";
-        if(!Pattern.matches(RegisteringAfFriviligController.efternavnRegex, aktivitetsTitel.getText())){
+        if(!aktivitetsTitel.getText().equals("")){
             titel = aktivitetsTitel.getText();
             titelB = true;
+            System.out.println("titel " + titelB);
         }
+
         boolean beskrivelseB = false;
         String beskrivelseS = "";
-        if (beskrivelse.getText().equals("")){
+        if (!beskrivelse.getText().equals("")){
             beskrivelseS = beskrivelse.getText();
             beskrivelseB = true;
+            System.out.println("besk " + beskrivelseB);
         }
 
         boolean lokationB = false;
         String lokationS = "";
-        if (beskrivelse.getText().equals("")){
+        if (!lokation.getText().equals("")){
             lokationS = lokation.getText();
             lokationB = true;
+            System.out.println("loc" + lokationB);
+        }
+
+        String ansvarligRosId = "";
+        boolean ansvarligB = false;
+        String ansvarligS = (String) ansvarligeListe.getValue();
+        if (!(ansvarligS.equals("") || ansvarligS == null)){
+            ansvarligRosId = ansvarligS.split("-")[1].substring(1);
+            ansvarligB = true;
+            System.out.println("ans " +ansvarligB);
         }
 
 
-
-        if (titelB && beskrivelseB && lokationB) {
-            //newAktivitet = new Aktivitet(titel, beskrivelseS, lokationS)
-            //ansvarligVagterController.done();
-            //stage.close();
+        if (titelB && beskrivelseB && lokationB && ansvarligB) {
+            newAktivitet = new Aktivitet(titel, beskrivelseS, lokationS, ansvarligRosId);
+            DatabaseLink.aktivteter.add(newAktivitet);
+            ansvarligVagterController.done();
+            stage.close();
         }
+        //todo skriv fejl
 
     }
 
