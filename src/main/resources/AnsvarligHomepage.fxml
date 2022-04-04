@@ -19,7 +19,7 @@
               <menus>
                   <Menu mnemonicParsing="false" text="Aktiviteter">
                     <items>
-                      <MenuItem mnemonicParsing="false" text="Akivitet admin" />
+                      <MenuItem mnemonicParsing="false" text="Akivitet admin" onAction="#aktivtetAdmin" />
                     </items>
                   </Menu>
                 <Menu mnemonicParsing="false" text="Vagter">

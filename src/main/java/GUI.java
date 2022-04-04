@@ -19,7 +19,7 @@ import java.util.HashMap;
 public class GUI extends Application {
 
 
-    private Stage stage;
+    public Stage stage;
 
     public static void run(){
         launch();
@@ -38,6 +38,7 @@ public class GUI extends Application {
         stage.setResizable(false);
         stage.setOnCloseRequest(event -> {
             DatabaseLink.savePersonData("person.ser");
+            DatabaseLink.saveAktivetetData("aktiviteter.ser");
         });
         stage.show();
     }
@@ -106,6 +107,16 @@ public class GUI extends Application {
         controller.setGUI(this);
         ((Label) ((HBox) box.getChildren().get(0)).getChildren().get(2)).setText(person.getRoskildeId() + " - " + person.getNavn() + " " + person.getEfternavn());
         controller.preLoad(person);
+        Scene scene = new Scene(box,box.getPrefWidth(), box.getPrefHeight());
+        stage.setScene(scene);
+    }
+
+    public void setAktivtetAdminScene(Person person) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("AnsvarligVagter.fxml"));
+        VBox box = loader.load();
+        AnsvarligVagterController controller = loader.getController();
+        controller.setGUI(this);
+        ((Label) ((HBox) box.getChildren().get(0)).getChildren().get(2)).setText(person.getRoskildeId() + " - " + person.getNavn() + " " + person.getEfternavn());
         Scene scene = new Scene(box,box.getPrefWidth(), box.getPrefHeight());
         stage.setScene(scene);
     }

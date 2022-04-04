@@ -1,4 +1,5 @@
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Aktivitet implements Serializable {
@@ -6,5 +7,13 @@ public class Aktivitet implements Serializable {
     private String beskrivelse;
     private String lokation;
     private String ansvarlig;
-    private List<Vagt> vagter;
+    private ArrayList<Vagt> vagter;
+
+    public Aktivitet(String title, String beskrivelse, String lokation, String ansvarlig) {
+        this.title = title;
+        this.beskrivelse = beskrivelse;
+        this.lokation = lokation;
+        this.ansvarlig = ansvarlig;
+        vagter = new ArrayList<>();
+    }
 }
