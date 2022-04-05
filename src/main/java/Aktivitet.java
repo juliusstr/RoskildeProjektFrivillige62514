@@ -44,4 +44,8 @@ public class Aktivitet implements Serializable {
     public ArrayList<Vagt> getVagter() {
         return (ArrayList<Vagt>) vagter.clone();
     }
+
+    public void addVagt(Vagt vagt){
+        vagter.add(vagt);
+    }
 }

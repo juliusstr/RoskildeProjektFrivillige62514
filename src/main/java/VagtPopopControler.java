@@ -3,6 +3,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.stage.Stage;
 
+import java.util.Calendar;
 import java.util.Map;
 
 public class VagtPopopControler {
@@ -36,5 +37,48 @@ public class VagtPopopControler {
 
     public void tilbage(ActionEvent actionEvent) {
         stage.close();
+    }
+
+
+    public void opretVagt(ActionEvent actionEvent) {
+        boolean ready = true;
+        if (startTidspunktChoiceBox.getValue()==null)
+            ready = false;
+        if (startDatoDatePicker.getValue()== null)
+            ready = false;
+        if (slutTidspunktChoiceBox.getValue() == null)
+            ready = false;
+        if (slutDatoDatePicker.getValue() == null)
+            ready = false;
+
+        if (ready) {
+            System.out.println(DatabaseLink.aktivteter.get(aktivitet.getId() - 1).getVagter().size());
+            Calendar startTidspunkt;
+            Calendar slutTidspunkt;
+            int hh;
+            int mm;
+            hh = Integer.parseInt(((String) startTidspunktChoiceBox.getValue()).split(":")[0]);
+            mm = Integer.parseInt(((String) startTidspunktChoiceBox.getValue()).split(":")[1]);
+            startTidspunkt = Calendar.getInstance();
+            startTidspunkt.set(startDatoDatePicker.getValue().getYear(), startDatoDatePicker.getValue().getMonth().getValue(), startDatoDatePicker.getValue().getDayOfMonth(), hh, mm);
+
+            hh = Integer.parseInt(((String) slutTidspunktChoiceBox.getValue()).split(":")[0]);
+            mm = Integer.parseInt(((String) slutTidspunktChoiceBox.getValue()).split(":")[1]);
+            slutTidspunkt = Calendar.getInstance();
+            slutTidspunkt.set(slutDatoDatePicker.getValue().getYear(), slutDatoDatePicker.getValue().getMonth().getValue(), slutDatoDatePicker.getValue().getDayOfMonth(), hh, mm);
+            String firvilig;
+            if (friviligChoiceBox.getValue()!= null) {
+                firvilig = friviligChoiceBox.getValue().toString().split("-")[1].substring(1);
+            } else {
+                firvilig = "x";
+            }
+            DatabaseLink.aktivteter.get(aktivitet.getId() - 1).addVagt(new Vagt(firvilig, startTidspunkt, slutTidspunkt));
+            ansvarligVagterController.loadVagter();
+            System.out.println("ja");
+            System.out.println(DatabaseLink.aktivteter.get(aktivitet.getId() - 1).getVagter().size());
+            stage.close();
+        } else {
+            //todo informer om fejl
+        }
     }
 }

@@ -73,6 +73,9 @@ public class DatabaseLink {
     }
 
     public static Person getPersonFromID(String iD){
+        if (iD.equals("x")){
+            return new Person("x","x","x","x","x","x","x");
+        }
         for(Map.Entry<String, Person> entry : DatabaseLink.personHashMap.entrySet()) {
             String key = entry.getKey();
             if (key.equals(iD)) {

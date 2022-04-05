@@ -43,6 +43,7 @@ public class AnsvarligVagterController {
         DatabaseLink.aktivteter.forEach((akt) ->{
             aktivtetListeChoiceBox.getItems().add("" + akt.getTitle() + " - " + akt.getId());
         });
+
     }
 
     public void preeload() {
@@ -68,7 +69,7 @@ public class AnsvarligVagterController {
         }
     }
 
-    public void setVagter(ActionEvent actionEvent) {
+    /*public void setVagter(ActionEvent actionEvent) {
         if (aktivtetListeChoiceBox.getValue() != null) {
             String aktivitetId = "";
             String aktivitet = (String) aktivtetListeChoiceBox.getValue();
@@ -93,7 +94,7 @@ public class AnsvarligVagterController {
         } else {
             vagtListChoiceBox.getItems().clear();
         }
-    }
+    }*/
 
 
     public void opretVagt(ActionEvent actionEvent) throws IOException {
@@ -126,4 +127,26 @@ public class AnsvarligVagterController {
             dialog.show();
         }
     }
+
+    public void loadVagter(){
+        vagtListChoiceBox.getItems().clear();
+        String aktivitetId = "";
+        Aktivitet aktivitetA = null;
+        String aktivitet = (String) aktivtetListeChoiceBox.getValue();
+        aktivitetId = aktivitet.split("-")[1].substring(1);
+        int id = Integer.parseInt(aktivitetId);
+        for (int i = 0; i < DatabaseLink.aktivteter.size(); i++) {
+            if (DatabaseLink.aktivteter.get(i).getId() == id) {
+                aktivitetA = DatabaseLink.aktivteter.get(i);
+                System.out.println("titel: " + aktivitetA.getTitle());
+                break;
+            }
+        }
+        for (int i = 0; i < aktivitetA.getVagter().size(); i++) {
+            vagtListChoiceBox.getItems().add("" + DatabaseLink.getPersonFromID(aktivitetA.getVagter().get(i).getFrivillig()).getNavn() + " " + DatabaseLink.getPersonFromID(aktivitetA.getVagter().get(i).getFrivillig()).getEfternavn() + " -  "+ DatabaseLink.getPersonFromID(aktivitetA.getVagter().get(i).getFrivillig()).getRoskildeId() + " - Start:" + aktivitetA.getVagter().get(i).printStartTidspunkt() + " Slut: " + aktivitetA.getVagter().get(i).printSlutTidpunkt());
+            System.out.println(i);
+            System.out.println("" + DatabaseLink.getPersonFromID(aktivitetA.getVagter().get(i).getFrivillig()).getNavn() + " " + DatabaseLink.getPersonFromID(aktivitetA.getVagter().get(i).getFrivillig()).getEfternavn() + " - Start:" + aktivitetA.getVagter().get(i).printStartTidspunkt() + " Slut: " + aktivitetA.getVagter().get(i).printSlutTidpunkt());
+        }
+    }
+
 }

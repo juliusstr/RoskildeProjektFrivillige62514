@@ -28,7 +28,6 @@ public class AktivitetPopopControler {
         if(!aktivitetsTitel.getText().equals("")){
             titel = aktivitetsTitel.getText();
             titelB = true;
-            System.out.println("titel " + titelB);
         }
 
         boolean beskrivelseB = false;
@@ -36,7 +35,6 @@ public class AktivitetPopopControler {
         if (!beskrivelse.getText().equals("")){
             beskrivelseS = beskrivelse.getText();
             beskrivelseB = true;
-            System.out.println("besk " + beskrivelseB);
         }
 
         boolean lokationB = false;
@@ -44,7 +42,6 @@ public class AktivitetPopopControler {
         if (!lokation.getText().equals("")){
             lokationS = lokation.getText();
             lokationB = true;
-            System.out.println("loc" + lokationB);
         }
 
         String ansvarligRosId = "";
@@ -53,7 +50,6 @@ public class AktivitetPopopControler {
         if (!(ansvarligS.equals("") || ansvarligS == null)){
             ansvarligRosId = ansvarligS.split("-")[1].substring(1);
             ansvarligB = true;
-            System.out.println("ans " +ansvarligB);
         }
 
 
@@ -72,7 +68,6 @@ public class AktivitetPopopControler {
             String key = entry.getKey();
             if (key.charAt(0) == 'A') {
                 Person person = entry.getValue();
-                System.out.println(key);
                 ansvarligeListe.getItems().add("" + person.getNavn() + " " + person.getEfternavn() + " - " + person.getRoskildeId());
             }
         }
