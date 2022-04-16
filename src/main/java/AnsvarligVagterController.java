@@ -6,7 +6,6 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import java.awt.*;
 import java.io.IOException;
 
 public class AnsvarligVagterController {
@@ -40,21 +39,17 @@ public class AnsvarligVagterController {
 
     public void done() {
         aktivtetListeChoiceBox.getItems().clear();
-        DatabaseLink.aktivteter.forEach((akt) ->{
-            aktivtetListeChoiceBox.getItems().add("" + akt.getTitle() + " - " + akt.getId());
-        });
+        DatabaseLink.aktivteter.forEach((akt) -> aktivtetListeChoiceBox.getItems().add("" + akt.getTitle() + " - " + akt.getId()));
 
     }
 
     public void preeload() {
-        DatabaseLink.aktivteter.forEach((akt) ->{
-        aktivtetListeChoiceBox.getItems().add("" + akt.getTitle() + " - " + akt.getId());
-        });
+        DatabaseLink.aktivteter.forEach((akt) -> aktivtetListeChoiceBox.getItems().add("" + akt.getTitle() + " - " + akt.getId()));
     }
 
     public void sletAktivitet(ActionEvent actionEvent) {
         if (aktivtetListeChoiceBox.getValue() != null) {
-            String aktivitetId = "";
+            String aktivitetId;
             String aktivitet = (String) aktivtetListeChoiceBox.getValue();
             aktivitetId = aktivitet.split("-")[1].substring(1);
             System.out.println(aktivitetId);
@@ -69,37 +64,9 @@ public class AnsvarligVagterController {
         }
     }
 
-    /*public void setVagter(ActionEvent actionEvent) {
-        if (aktivtetListeChoiceBox.getValue() != null) {
-            String aktivitetId = "";
-            String aktivitet = (String) aktivtetListeChoiceBox.getValue();
-            aktivitetId = aktivitet.split("-")[1].substring(1);
-            System.out.println(aktivitetId);
-            int id = Integer.parseInt(aktivitetId);
-            for (int i = 0; i < DatabaseLink.aktivteter.size(); i++) {
-                if (DatabaseLink.aktivteter.get(i).getId() == id) {
-                    for (int j = 0; j < DatabaseLink.aktivteter.get(i).getVagter().size(); j++) {
-                        Person person = DatabaseLink.getPersonFromID(DatabaseLink.aktivteter.get(i).getVagter().get(j).getFrivillig());
-                        String text = "";
-                        if (person != null) {
-                            text += person.getNavn() + " ";
-                            text += person.getEfternavn() + " - ";
-                            text += person.getRoskildeId();
-                        }
-                        vagtListChoiceBox.getItems().add("" + text);
-                    }
-                    break;
-                }
-            }
-        } else {
-            vagtListChoiceBox.getItems().clear();
-        }
-    }*/
-
-
     public void opretVagt(ActionEvent actionEvent) throws IOException {
         if (aktivtetListeChoiceBox.getValue() != null) {
-            String aktivitetId = "";
+            String aktivitetId;
             Aktivitet aktivitetA = null;
             String aktivitet = (String) aktivtetListeChoiceBox.getValue();
             aktivitetId = aktivitet.split("-")[1].substring(1);
@@ -130,7 +97,7 @@ public class AnsvarligVagterController {
 
     public void loadVagter(){
         vagtListChoiceBox.getItems().clear();
-        String aktivitetId = "";
+        String aktivitetId;
         Aktivitet aktivitetA = null;
         String aktivitet = (String) aktivtetListeChoiceBox.getValue();
         aktivitetId = aktivitet.split("-")[1].substring(1);
@@ -143,10 +110,33 @@ public class AnsvarligVagterController {
             }
         }
         for (int i = 0; i < aktivitetA.getVagter().size(); i++) {
-            vagtListChoiceBox.getItems().add("" + DatabaseLink.getPersonFromID(aktivitetA.getVagter().get(i).getFrivillig()).getNavn() + " " + DatabaseLink.getPersonFromID(aktivitetA.getVagter().get(i).getFrivillig()).getEfternavn() + " -  "+ DatabaseLink.getPersonFromID(aktivitetA.getVagter().get(i).getFrivillig()).getRoskildeId() + " - Start:" + aktivitetA.getVagter().get(i).printStartTidspunkt() + " Slut: " + aktivitetA.getVagter().get(i).printSlutTidpunkt());
-            System.out.println(i);
-            System.out.println("" + DatabaseLink.getPersonFromID(aktivitetA.getVagter().get(i).getFrivillig()).getNavn() + " " + DatabaseLink.getPersonFromID(aktivitetA.getVagter().get(i).getFrivillig()).getEfternavn() + " - Start:" + aktivitetA.getVagter().get(i).printStartTidspunkt() + " Slut: " + aktivitetA.getVagter().get(i).printSlutTidpunkt());
+            vagtListChoiceBox.getItems().add("" + DatabaseLink.getPersonFromID(aktivitetA.getVagter().get(i).getFrivillig()).getNavn() + " " + DatabaseLink.getPersonFromID(aktivitetA.getVagter().get(i).getFrivillig()).getEfternavn() + " -  "+ DatabaseLink.getPersonFromID(aktivitetA.getVagter().get(i).getFrivillig()).getRoskildeId() + " - " + (aktivitetA.getVagter().get(i)).getId() + " - Start:" + aktivitetA.getVagter().get(i).printStartTidspunkt() + " Slut: " + aktivitetA.getVagter().get(i).printSlutTidpunkt());
         }
     }
 
+    public void sletVagt(ActionEvent actionEvent) {
+        if(vagtListChoiceBox.getValue() != null && aktivtetListeChoiceBox.getValue() != null) {
+            String aktivitetId;
+            int aktivitetID = 0;
+            String aktivitet = (String) aktivtetListeChoiceBox.getValue();
+            aktivitetId = aktivitet.split("-")[1].substring(1);
+            int id = Integer.parseInt(aktivitetId);
+            for (int i = 0; i < DatabaseLink.aktivteter.size(); i++) {
+                if (DatabaseLink.aktivteter.get(i).getId() == id) {
+                    aktivitetID = i;
+                    break;
+                }
+            }
+            String vagtIDS = ((String) vagtListChoiceBox.getValue()).split("-")[2].replace(" ","");
+            int vagt =Integer.parseInt(vagtIDS);
+            System.out.println(vagt);
+            for (int i = 0; i < DatabaseLink.aktivteter.get(aktivitetID).getVagter().size(); i++) {
+                if (DatabaseLink.aktivteter.get(aktivitetID).getVagter().get(i).getId() == vagt){
+                    DatabaseLink.aktivteter.get(aktivitetID).removeVagt(vagt);
+                    break;
+                }
+            }
+            loadVagter();
+        }
+    }
 }

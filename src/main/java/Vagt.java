@@ -4,6 +4,8 @@ import java.util.Calendar;
 import java.util.Locale;
 
 public class Vagt implements Serializable {
+    private static int nextId = 1;
+    private int id;
     private String frivillig;
     private Calendar startTidspunkt;
     private Calendar slutTidspunkt;
@@ -12,6 +14,8 @@ public class Vagt implements Serializable {
         this.frivillig = frivillig;
         this.startTidspunkt = startTidspunkt;
         this.slutTidspunkt = slutTidspunkt;
+        id = nextId;
+        nextId++;
     }
 
     public String getFrivillig() {
@@ -24,6 +28,10 @@ public class Vagt implements Serializable {
 
     public Calendar getSlutTidspunkt() {
         return slutTidspunkt;
+    }
+
+    public int getId(){
+        return id;
     }
 
     public String printStartTidspunkt(){

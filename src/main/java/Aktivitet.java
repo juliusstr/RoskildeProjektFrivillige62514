@@ -48,4 +48,13 @@ public class Aktivitet implements Serializable {
     public void addVagt(Vagt vagt){
         vagter.add(vagt);
     }
+
+    public void removeVagt(int id){
+        for (int i = 0; i < vagter.size(); i++) {
+            if (vagter.get(i).getId() == id){
+                vagter.remove(i);
+                break;
+            }
+        }
+    }
 }
