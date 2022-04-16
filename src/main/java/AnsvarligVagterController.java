@@ -2,6 +2,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -11,6 +13,7 @@ import java.io.IOException;
 public class AnsvarligVagterController {
     public ChoiceBox aktivtetListeChoiceBox;
     public ChoiceBox vagtListChoiceBox;
+    public TextArea aktivitetDisplay;
     private GUI gui;
 
     public void setGUI(GUI gui) {
@@ -45,6 +48,7 @@ public class AnsvarligVagterController {
 
     public void preeload() {
         DatabaseLink.aktivteter.forEach((akt) -> aktivtetListeChoiceBox.getItems().add("" + akt.getTitle() + " - " + akt.getId()));
+        aktivitetDisplay.setEditable(false);
     }
 
     public void sletAktivitet(ActionEvent actionEvent) {
@@ -112,6 +116,17 @@ public class AnsvarligVagterController {
         for (int i = 0; i < aktivitetA.getVagter().size(); i++) {
             vagtListChoiceBox.getItems().add("" + DatabaseLink.getPersonFromID(aktivitetA.getVagter().get(i).getFrivillig()).getNavn() + " " + DatabaseLink.getPersonFromID(aktivitetA.getVagter().get(i).getFrivillig()).getEfternavn() + " -  "+ DatabaseLink.getPersonFromID(aktivitetA.getVagter().get(i).getFrivillig()).getRoskildeId() + " - " + (aktivitetA.getVagter().get(i)).getId() + " - Start:" + aktivitetA.getVagter().get(i).printStartTidspunkt() + " Slut: " + aktivitetA.getVagter().get(i).printSlutTidpunkt());
         }
+        String temp = aktivitetA.getTitle() + "\n";
+        temp += "lokation: " + aktivitetA.getLokation() + "\n";
+        temp += "Beskrivelse:\n" + aktivitetA.getBeskrivelse() + "\n";
+        temp += "Ansvarlig: " + aktivitetA.getAnsvarligToDisplay() + "\n";
+        temp += "\nVagter:\n";
+
+        for (int i = 0; i < vagtListChoiceBox.getItems().size(); i++) {
+            temp += (String) vagtListChoiceBox.getItems().get(i) + "\n";
+        }
+        aktivitetDisplay.setText(temp);
+
     }
 
     public void sletVagt(ActionEvent actionEvent) {

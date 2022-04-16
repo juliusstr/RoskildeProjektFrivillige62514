@@ -26,7 +26,7 @@
             </MenuBar>
             <AnchorPane prefHeight="358.0" prefWidth="600.0">
                <children>
-                  <ListView layoutX="14.0" layoutY="71.0" prefHeight="273.0" prefWidth="573.0" />
+                  <TextArea fx:id="aktivitetDisplay" layoutX="13.0" layoutY="71.0" prefHeight="273.0" prefWidth="573.0" />
                   <Button layoutX="480.0" layoutY="39.0" mnemonicParsing="false" onAction="#opretVagt" prefHeight="25.0" prefWidth="100.0" text="Opret Vagt" />
                   <Button layoutX="365.0" layoutY="39.0" mnemonicParsing="false" onAction="#sletVagt" prefHeight="25.0" prefWidth="100.0" text="Slet Vagt" />
                   <ChoiceBox fx:id="aktivtetListeChoiceBox" layoutX="68.0" layoutY="8.0" onAction="#loadVagter" prefHeight="25.0" prefWidth="272.0" />

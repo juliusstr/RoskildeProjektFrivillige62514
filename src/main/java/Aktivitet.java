@@ -57,4 +57,11 @@ public class Aktivitet implements Serializable {
             }
         }
     }
+
+    public String getAnsvarligToDisplay(){
+        String temp = "";
+        Person person = DatabaseLink.getPersonFromID(ansvarlig);
+        temp += person.getNavn() + " " + person.getEfternavn() + "  TLF: " + person.getTlfNr() + "  " + person.getRoskildeId();
+        return temp;
+    }
 }
