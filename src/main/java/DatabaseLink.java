@@ -85,4 +85,18 @@ public class DatabaseLink {
         }
         return null;
     }
+
+    public static ArrayList<Vagt> getVagterFraPerson(Person person){
+        ArrayList<Vagt> vagter  = new ArrayList<>();
+        for (int i = 0; i < aktivteter.size(); i++) {
+            int n = aktivteter.get(i).getVagter().size();
+            ArrayList<Vagt> aktivitetVagter = aktivteter.get(i).getVagter();
+            for (int j = 0; j < n; j++) {
+                if (aktivitetVagter.get(j).getFrivillig().equals(person.getRoskildeId())){
+                    vagter.add(aktivitetVagter.get(j));
+                }
+            }
+        }
+        return vagter;
+    }
 }

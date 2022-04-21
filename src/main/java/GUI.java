@@ -92,8 +92,9 @@ public class GUI extends Application {
     public void setFriviligeInformationerScene(Person person) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FriviligMineInformationer.fxml"));
         VBox box = loader.load();
-         FriviligMineInformationerController friviligMineInformationerController = loader.getController();
+        FriviligMineInformationerController friviligMineInformationerController = loader.getController();
         friviligMineInformationerController.setGUI(this);
+        ((Label) ((HBox) box.getChildren().get(0)).getChildren().get(2)).setText(person.getRoskildeId() + " - " + person.getNavn() + " " + person.getEfternavn());
         friviligMineInformationerController.preLoad(person);
         Scene friviligMineInformationerScene = new Scene(box,box.getPrefWidth(), box.getPrefHeight());
         stage.setScene(friviligMineInformationerScene);
@@ -117,6 +118,17 @@ public class GUI extends Application {
         AnsvarligVagterController controller = loader.getController();
         controller.setGUI(this);
         controller.preeload();
+        ((Label) ((HBox) box.getChildren().get(0)).getChildren().get(2)).setText(person.getRoskildeId() + " - " + person.getNavn() + " " + person.getEfternavn());
+        Scene scene = new Scene(box,box.getPrefWidth(), box.getPrefHeight());
+        stage.setScene(scene);
+    }
+
+    public void setfriviligMineVagterScene(Person person) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("SeMineVagter.fxml"));
+        VBox box = loader.load();
+        SeMineVagterController controller = loader.getController();
+        controller.setGUI(this);
+        controller.preeload(person);
         ((Label) ((HBox) box.getChildren().get(0)).getChildren().get(2)).setText(person.getRoskildeId() + " - " + person.getNavn() + " " + person.getEfternavn());
         Scene scene = new Scene(box,box.getPrefWidth(), box.getPrefHeight());
         stage.setScene(scene);

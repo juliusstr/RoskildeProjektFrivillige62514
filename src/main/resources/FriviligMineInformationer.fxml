@@ -16,7 +16,10 @@
       </HBox>
       <MenuBar>
          <menus>
-            <Menu mnemonicParsing="false" text="Vagter" />
+             <Menu mnemonicParsing="false" text="Vagter">
+                 <items>
+                     <MenuItem mnemonicParsing="false" onAction="#seMineVagter" text="Mine vagter" />
+                 </items></Menu>
             <Menu fx:id="logUd" mnemonicParsing="false" text="Min Konto">
                <items>
                   <MenuItem mnemonicParsing="false" text="Mine informationer" />

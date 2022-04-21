@@ -77,7 +77,7 @@ public class RegisteringAfFriviligController {
             bPassword = false;
         }
         if (bNavn && bEfternavn && bTlfNr && bEMail && bBDay && bPassword) {
-            System.out.println(navn.getText() + "\n" + efterNavn.getText() + "\n" + tlfNr.getText() + "\n" + eMail.getText() + "\n" + bDay.getValue().toString());
+            //System.out.println(navn.getText() + "\n" + efterNavn.getText() + "\n" + tlfNr.getText() + "\n" + eMail.getText() + "\n" + bDay.getValue().toString());//debug
             DatabaseLink.personHashMap.put("F" + (DatabaseLink.personHashMap.size() + 1), new Person(navn.getText(), efterNavn.getText(), tlfNr.getText(), eMail.getText(), bDay.getValue().toString(), "F" + (DatabaseLink.personHashMap.size() + 1), password1.getText()));
             GUI.infoBox("Dit brugerID er:\n" + "F" + DatabaseLink.personHashMap.size(), "Du er nu registret.");
             gui.setLoginScene();

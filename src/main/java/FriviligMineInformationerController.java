@@ -16,6 +16,7 @@ public class FriviligMineInformationerController {
     public Button gemBnt;
     public Button redigerBtn;
     public Button passwordBtn;
+    public Label currentUser;
     private GUI gui;
 
     public void setGUI(GUI gui) {
@@ -98,4 +99,10 @@ public class FriviligMineInformationerController {
             GUI.infoBox(error,"Fejl i redigering af person informationer");
         }
     }
+
+    public void seMineVagter(ActionEvent actionEvent) throws IOException {
+        Person person = DatabaseLink.personHashMap.get(currentUser.getText().split(" ")[0]);
+        gui.setfriviligMineVagterScene(person);
+    }
+
 }

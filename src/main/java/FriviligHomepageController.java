@@ -23,4 +23,9 @@ public class FriviligHomepageController {
         Person person = DatabaseLink.personHashMap.get(currentUser.getText().split(" ")[0]);
         gui.setFriviligeInformationerScene(person);
     }
+
+    public void seMineVagter(ActionEvent actionEvent) throws IOException {
+        Person person = DatabaseLink.personHashMap.get(currentUser.getText().split(" ")[0]);
+        gui.setfriviligMineVagterScene(person);
+    }
 }

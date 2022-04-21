@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FriviligHomepageController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FriviligHomepageController">
    <children>
       <HBox prefHeight="0.0" prefWidth="600.0">
          <children>
@@ -23,15 +17,18 @@
          <children>
             <MenuBar>
               <menus>
-                <Menu mnemonicParsing="false" text="Vagter" />
+                <Menu mnemonicParsing="false" text="Vagter">
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#seMineVagter" text="Mine vagter" />
+                     </items></Menu>
                   <Menu fx:id="logUd" mnemonicParsing="false" text="Min Konto">
                      <items>
                          <MenuItem mnemonicParsing="false" onAction="#setFriviligeInformationerScene" text="Mine informationer" />
-                        <MenuItem mnemonicParsing="false" onAction="#logud" text="logUd" />
+                         <MenuItem mnemonicParsing="false" onAction="#logud" text="logUd" />
                      </items></Menu>
               </menus>
             </MenuBar>
-            <Pane prefHeight="360.0" prefWidth="600.0" fx:id="pane"/>
+            <Pane fx:id="pane" prefHeight="360.0" prefWidth="600.0" />
          </children>
       </VBox>
    </children>

@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AnsvarligHomepsgeController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SeMineVagterController">
    <children>
       <HBox prefHeight="0.0" prefWidth="600.0">
          <children>
@@ -17,17 +17,21 @@
          <children>
             <MenuBar>
               <menus>
-                <Menu mnemonicParsing="false" text="Vagter" />
+                  <Menu mnemonicParsing="false" text="Vagter">
+                    <items>
+                       <MenuItem mnemonicParsing="false" text="Mine vagter" />
+                    </items></Menu>
                   <Menu fx:id="logUd" mnemonicParsing="false" text="Min Konto">
                      <items>
-                         <MenuItem mnemonicParsing="false" onAction="#logud" text="logUd" />
+                        <MenuItem mnemonicParsing="false" onAction="#setFriviligeInformationerScene" text="Mine informationer" />
+                        <MenuItem mnemonicParsing="false" onAction="#logud" text="logUd" />
                      </items></Menu>
               </menus>
             </MenuBar>
             <AnchorPane prefHeight="358.0" prefWidth="600.0">
                <children>
-                  <ListView layoutX="14.0" layoutY="41.0" prefHeight="303.0" prefWidth="573.0" />
-                  <TextField layoutX="14.0" layoutY="8.0" prefHeight="25.0" prefWidth="573.0" promptText="Søg..." />
+                  <ListView fx:id="vagtListe" layoutX="14.0" layoutY="41.0" prefHeight="303.0" prefWidth="573.0" />
+                  <TextField fx:id="siegeBar" layoutX="14.0" layoutY="8.0" onAction="#soeg" prefHeight="25.0" prefWidth="573.0" promptText="Søg..." />
                </children></AnchorPane>
          </children>
       </VBox>

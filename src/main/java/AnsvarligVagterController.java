@@ -74,7 +74,6 @@ public class AnsvarligVagterController {
             Aktivitet aktivitetA = null;
             String aktivitet = (String) aktivtetListeChoiceBox.getValue();
             aktivitetId = aktivitet.split("-")[1].substring(1);
-            System.out.println(aktivitetId);
             int id = Integer.parseInt(aktivitetId);
             for (int i = 0; i < DatabaseLink.aktivteter.size(); i++) {
                 if (DatabaseLink.aktivteter.get(i).getId() == id) {
@@ -109,7 +108,6 @@ public class AnsvarligVagterController {
         for (int i = 0; i < DatabaseLink.aktivteter.size(); i++) {
             if (DatabaseLink.aktivteter.get(i).getId() == id) {
                 aktivitetA = DatabaseLink.aktivteter.get(i);
-                System.out.println("titel: " + aktivitetA.getTitle());
                 break;
             }
         }
@@ -144,7 +142,6 @@ public class AnsvarligVagterController {
             }
             String vagtIDS = ((String) vagtListChoiceBox.getValue()).split("-")[2].replace(" ","");
             int vagt =Integer.parseInt(vagtIDS);
-            System.out.println(vagt);
             for (int i = 0; i < DatabaseLink.aktivteter.get(aktivitetID).getVagter().size(); i++) {
                 if (DatabaseLink.aktivteter.get(aktivitetID).getVagter().get(i).getId() == vagt){
                     DatabaseLink.aktivteter.get(aktivitetID).removeVagt(vagt);
