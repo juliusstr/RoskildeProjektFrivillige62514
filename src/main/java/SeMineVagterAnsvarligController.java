@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class SeMineVagterAnsvarligController {
-
+    public Label currentUser;
     public TableView vagtListe;
     public TextField soegeBar;
     private GUI gui;
@@ -87,5 +87,20 @@ public class SeMineVagterAnsvarligController {
             vagtListe.getItems().add(vagter.get(i));
         }
 
+    }
+
+    public void aktivtetAdmin(ActionEvent actionEvent) throws IOException {
+        Person person = DatabaseLink.personHashMap.get(currentUser.getText().split(" ")[0]);
+        gui.setAktivtetAdminScene(person);
+    }
+
+    public void vagterAnsvarlig(ActionEvent actionEvent) throws IOException {
+        Person person = DatabaseLink.personHashMap.get(currentUser.getText().split(" ")[0]);
+        gui.setSeMineVagterAnsvarlig(person);
+    }
+
+    public void mineInformationer(ActionEvent actionEvent) throws IOException {
+        Person person = DatabaseLink.personHashMap.get(currentUser.getText().split(" ")[0]);
+        gui.setAnsvarligMineInformationer(person);
     }
 }

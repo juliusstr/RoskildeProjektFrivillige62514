@@ -24,17 +24,25 @@
             <Separator opacity="0.0" prefHeight="23.0" prefWidth="43.0" />
          </children>
       </HBox>
-      <MenuBar>
-         <menus>
-            <Menu mnemonicParsing="false" text="Vagter" />
-            <Menu fx:id="logUd" mnemonicParsing="false" text="Min Konto">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Mine informationer" />
-                  <MenuItem mnemonicParsing="false" onAction="#logud" text="logUd" />
-               </items>
-            </Menu>
-         </menus>
-      </MenuBar>
+       <MenuBar>
+           <menus>
+               <Menu mnemonicParsing="false" text="Aktiviteter">
+                   <items>
+                       <MenuItem mnemonicParsing="false" onAction="#aktivtetAdmin" text="Akivitet admin" />
+                   </items>
+               </Menu>
+               <Menu mnemonicParsing="false" text="Vagter">
+                   <items>
+                       <MenuItem mnemonicParsing="false" onAction="#vagterAnsvarlig" text="Se vagter" />
+                   </items></Menu>
+               <Menu fx:id="logUd" mnemonicParsing="false" text="Min Konto">
+                   <items>
+                       <MenuItem mnemonicParsing="false" onAction="#mineInformationer" text="Mine Informationer" />
+                       <MenuItem mnemonicParsing="false" onAction="#logud" text="logUd" />
+                   </items>
+               </Menu>
+           </menus>
+       </MenuBar>
       <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="360.0" prefWidth="600.0">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="2.0" minWidth="2.0" prefWidth="2.0" />

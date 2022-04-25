@@ -2,6 +2,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
@@ -10,6 +11,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class AnsvarligVagterController {
+    public Label currentUser;
     public ChoiceBox aktivtetListeChoiceBox;
     public ChoiceBox vagtListChoiceBox;
     public TextArea aktivitetDisplay;
@@ -46,6 +48,7 @@ public class AnsvarligVagterController {
     }
 
     public void preeload() {
+
         DatabaseLink.aktivteter.forEach((akt) -> aktivtetListeChoiceBox.getItems().add("" + akt.getTitle() + " - " + akt.getId()));
         aktivitetDisplay.setEditable(false);
     }
@@ -63,6 +66,7 @@ public class AnsvarligVagterController {
                     break;
                 }
             }
+            System.err.println("Vagt er slettet");
             done();
         }
     }
@@ -101,28 +105,35 @@ public class AnsvarligVagterController {
         vagtListChoiceBox.getItems().clear();
         String aktivitetId;
         Aktivitet aktivitetA = null;
-        String aktivitet = (String) aktivtetListeChoiceBox.getValue();
-        aktivitetId = aktivitet.split("-")[1].substring(1);
-        int id = Integer.parseInt(aktivitetId);
-        for (int i = 0; i < DatabaseLink.aktivteter.size(); i++) {
-            if (DatabaseLink.aktivteter.get(i).getId() == id) {
-                aktivitetA = DatabaseLink.aktivteter.get(i);
-                break;
+        String aktivitet ="";
+        try {
+            aktivitet = (String) aktivtetListeChoiceBox.getValue();
+        } catch (NullPointerException e){
+            e.printStackTrace();
+        }
+        if (aktivitet.contains("-")) {
+            aktivitetId = aktivitet.split("-")[1].substring(1);
+            int id = Integer.parseInt(aktivitetId);
+            for (int i = 0; i < DatabaseLink.aktivteter.size(); i++) {
+                if (DatabaseLink.aktivteter.get(i).getId() == id) {
+                    aktivitetA = DatabaseLink.aktivteter.get(i);
+                    break;
+                }
             }
-        }
-        for (int i = 0; i < aktivitetA.getVagter().size(); i++) {
-            vagtListChoiceBox.getItems().add("" + DatabaseLink.getPersonFromID(aktivitetA.getVagter().get(i).getFrivillig()).getNavn() + " " + DatabaseLink.getPersonFromID(aktivitetA.getVagter().get(i).getFrivillig()).getEfternavn() + " -  "+ DatabaseLink.getPersonFromID(aktivitetA.getVagter().get(i).getFrivillig()).getRoskildeId() + " - " + (aktivitetA.getVagter().get(i)).getId() + " - Start:" + aktivitetA.getVagter().get(i).getStartTidspunkt() + " Slut: " + aktivitetA.getVagter().get(i).getSlutTidpunkt());
-        }
-        String temp = aktivitetA.getTitle() + "\n";
-        temp += "lokation: " + aktivitetA.getLokation() + "\n";
-        temp += "Beskrivelse:\n" + aktivitetA.getBeskrivelse() + "\n";
-        temp += "Ansvarlig: " + aktivitetA.getAnsvarligToDisplay() + "\n";
-        temp += "\nVagter:\n";
+            for (int i = 0; i < aktivitetA.getVagter().size(); i++) {
+                vagtListChoiceBox.getItems().add("" + DatabaseLink.getPersonFromID(aktivitetA.getVagter().get(i).getFrivillig()).getNavn() + " " + DatabaseLink.getPersonFromID(aktivitetA.getVagter().get(i).getFrivillig()).getEfternavn() + " -  " + DatabaseLink.getPersonFromID(aktivitetA.getVagter().get(i).getFrivillig()).getRoskildeId() + " - " + (aktivitetA.getVagter().get(i)).getId() + " - Start:" + aktivitetA.getVagter().get(i).getStartTidspunkt() + " Slut: " + aktivitetA.getVagter().get(i).getSlutTidpunkt());
+            }
+            String temp = aktivitetA.getTitle() + "\n";
+            temp += "lokation: " + aktivitetA.getLokation() + "\n";
+            temp += "Beskrivelse:\n" + aktivitetA.getBeskrivelse() + "\n";
+            temp += "Ansvarlig: " + aktivitetA.getAnsvarligToDisplay() + "\n";
+            temp += "\nVagter:\n";
 
-        for (int i = 0; i < vagtListChoiceBox.getItems().size(); i++) {
-            temp += (String) vagtListChoiceBox.getItems().get(i) + "\n";
+            for (int i = 0; i < vagtListChoiceBox.getItems().size(); i++) {
+                temp += (String) vagtListChoiceBox.getItems().get(i) + "\n";
+            }
+            aktivitetDisplay.setText(temp);
         }
-        aktivitetDisplay.setText(temp);
 
     }
 
@@ -149,5 +160,20 @@ public class AnsvarligVagterController {
             }
             loadVagter();
         }
+    }
+
+    public void aktivtetAdmin(ActionEvent actionEvent) throws IOException {
+        Person person = DatabaseLink.personHashMap.get(currentUser.getText().split(" ")[0]);
+        gui.setAktivtetAdminScene(person);
+    }
+
+    public void vagterAnsvarlig(ActionEvent actionEvent) throws IOException {
+        Person person = DatabaseLink.personHashMap.get(currentUser.getText().split(" ")[0]);
+        gui.setSeMineVagterAnsvarlig(person);
+    }
+
+    public void mineInformationer(ActionEvent actionEvent) throws IOException {
+        Person person = DatabaseLink.personHashMap.get(currentUser.getText().split(" ")[0]);
+        gui.setAnsvarligMineInformationer(person);
     }
 }

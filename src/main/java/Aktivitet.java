@@ -8,7 +8,6 @@ public class Aktivitet implements Serializable {
     private String lokation;
     private String ansvarlig;
     private int id;
-    private static int nextId = 1;
     private ArrayList<Vagt> vagter;
 
     public Aktivitet(String title, String beskrivelse, String lokation, String ansvarlig) {
@@ -17,8 +16,18 @@ public class Aktivitet implements Serializable {
         this.lokation = lokation;
         this.ansvarlig = ansvarlig;
         vagter = new ArrayList<>();
-        id = nextId;
-        nextId++;
+        id = getNextId();
+    }
+
+    private int getNextId(){
+        int temp = 0;
+        for (int i = 0; i < DatabaseLink.aktivteter.size(); i++) {
+            if (temp < DatabaseLink.aktivteter.get(i).getId()){
+                temp = DatabaseLink.aktivteter.get(i).getId();
+            }
+        }
+        temp++;
+        return temp;
     }
 
     public String getTitle() {

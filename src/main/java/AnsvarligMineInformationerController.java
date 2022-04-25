@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.regex.Pattern;
 
 public class AnsvarligMineInformationerController {
+    public Label currentUser;
     public TextField navn;
     public TextField efternavn;
     public TextField tlfNr;
@@ -98,5 +99,20 @@ public class AnsvarligMineInformationerController {
             }
             GUI.infoBox(error,"Fejl i redigering af person informationer");
         }
+    }
+
+    public void aktivtetAdmin(ActionEvent actionEvent) throws IOException {
+        Person person = DatabaseLink.personHashMap.get(currentUser.getText().split(" ")[0]);
+        gui.setAktivtetAdminScene(person);
+    }
+
+    public void vagterAnsvarlig(ActionEvent actionEvent) throws IOException {
+        Person person = DatabaseLink.personHashMap.get(currentUser.getText().split(" ")[0]);
+        gui.setSeMineVagterAnsvarlig(person);
+    }
+
+    public void mineInformationer(ActionEvent actionEvent) throws IOException {
+        Person person = DatabaseLink.personHashMap.get(currentUser.getText().split(" ")[0]);
+        gui.setAnsvarligMineInformationer(person);
     }
 }
