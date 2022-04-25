@@ -21,7 +21,6 @@ public class VagtPopopControler {
             String key = entry.getKey();
             if (key.charAt(0) == 'F') {
                 Person person = entry.getValue();
-                System.out.println(key);
                 friviligChoiceBox.getItems().add("" + person.getNavn() + " " + person.getEfternavn() + " - " + person.getRoskildeId());
             }
         }
@@ -72,7 +71,7 @@ public class VagtPopopControler {
             } else {
                 firvilig = "x";
             }
-            DatabaseLink.aktivteter.get(aktivitet.getId() - 1).addVagt(new Vagt(firvilig, startTidspunkt, slutTidspunkt));
+            DatabaseLink.aktivteter.get(aktivitet.getId() - 1).addVagt(new Vagt(firvilig, startTidspunkt, slutTidspunkt,aktivitet));
             ansvarligVagterController.loadVagter();
             System.out.println("ja");
             System.out.println(DatabaseLink.aktivteter.get(aktivitet.getId() - 1).getVagter().size());

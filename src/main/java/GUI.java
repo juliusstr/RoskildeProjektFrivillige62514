@@ -127,10 +127,12 @@ public class GUI extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("SeMineVagter.fxml"));
         VBox box = loader.load();
         SeMineVagterController controller = loader.getController();
-        controller.setGUI(this);
-        controller.preeload(person);
+
         ((Label) ((HBox) box.getChildren().get(0)).getChildren().get(2)).setText(person.getRoskildeId() + " - " + person.getNavn() + " " + person.getEfternavn());
         Scene scene = new Scene(box,box.getPrefWidth(), box.getPrefHeight());
         stage.setScene(scene);
+
+        controller.setGUI(this);
+        controller.preeload(person);
     }
 }

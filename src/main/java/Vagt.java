@@ -9,12 +9,14 @@ public class Vagt implements Serializable {
     private String frivillig;
     private Calendar startTidspunkt;
     private Calendar slutTidspunkt;
+    private Aktivitet aktivitet;
 
-    public Vagt(String frivillig, Calendar startTidspunkt, Calendar slutTidspunkt) {
+    public Vagt(String frivillig, Calendar startTidspunkt, Calendar slutTidspunkt, Aktivitet aktivitet) {
         this.frivillig = frivillig;
         this.startTidspunkt = startTidspunkt;
         this.slutTidspunkt = slutTidspunkt;
         id = nextId;
+        this.aktivitet = aktivitet;
         nextId++;
     }
 
@@ -22,27 +24,21 @@ public class Vagt implements Serializable {
         return frivillig;
     }
 
-    public Calendar getStartTidspunkt() {
-        return startTidspunkt;
-    }
-
-    public Calendar getSlutTidspunkt() {
-        return slutTidspunkt;
-    }
 
     public int getId(){
         return id;
     }
 
-    public String printStartTidspunkt(){
+    public String getStartTidspunkt(){
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.GERMANY);
         return sdf.format(startTidspunkt.getTime());
     }
 
-    public String printSlutTidpunkt(){
+    public String getSlutTidpunkt(){
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.GERMANY);
         return sdf.format(slutTidspunkt.getTime());
     }
+
 
     public void setFrivillig(String frivillig) {
         this.frivillig = frivillig;
@@ -55,4 +51,17 @@ public class Vagt implements Serializable {
     public void setSlutTidspunkt(Calendar slutTidspunkt) {
         this.slutTidspunkt = slutTidspunkt;
     }
+
+    public String getLokation(){
+        return aktivitet.getLokation();
+    }
+
+    public String getOpgave(){
+        return aktivitet.getBeskrivelse();
+    }
+
+    public String getAnsvarlig(){
+        return DatabaseLink.getPersonFromID(aktivitet.getAnsvarlig()).print();
+    }
+
 }

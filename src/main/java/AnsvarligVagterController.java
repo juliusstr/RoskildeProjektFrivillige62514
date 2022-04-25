@@ -2,7 +2,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
@@ -112,7 +111,7 @@ public class AnsvarligVagterController {
             }
         }
         for (int i = 0; i < aktivitetA.getVagter().size(); i++) {
-            vagtListChoiceBox.getItems().add("" + DatabaseLink.getPersonFromID(aktivitetA.getVagter().get(i).getFrivillig()).getNavn() + " " + DatabaseLink.getPersonFromID(aktivitetA.getVagter().get(i).getFrivillig()).getEfternavn() + " -  "+ DatabaseLink.getPersonFromID(aktivitetA.getVagter().get(i).getFrivillig()).getRoskildeId() + " - " + (aktivitetA.getVagter().get(i)).getId() + " - Start:" + aktivitetA.getVagter().get(i).printStartTidspunkt() + " Slut: " + aktivitetA.getVagter().get(i).printSlutTidpunkt());
+            vagtListChoiceBox.getItems().add("" + DatabaseLink.getPersonFromID(aktivitetA.getVagter().get(i).getFrivillig()).getNavn() + " " + DatabaseLink.getPersonFromID(aktivitetA.getVagter().get(i).getFrivillig()).getEfternavn() + " -  "+ DatabaseLink.getPersonFromID(aktivitetA.getVagter().get(i).getFrivillig()).getRoskildeId() + " - " + (aktivitetA.getVagter().get(i)).getId() + " - Start:" + aktivitetA.getVagter().get(i).getStartTidspunkt() + " Slut: " + aktivitetA.getVagter().get(i).getSlutTidpunkt());
         }
         String temp = aktivitetA.getTitle() + "\n";
         temp += "lokation: " + aktivitetA.getLokation() + "\n";

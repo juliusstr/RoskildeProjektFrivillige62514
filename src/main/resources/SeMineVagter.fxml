@@ -3,13 +3,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SeMineVagterController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="454.0" prefWidth="872.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SeMineVagterController">
    <children>
       <HBox prefHeight="0.0" prefWidth="600.0">
          <children>
             <Separator opacity="0.0" prefHeight="0.0" prefWidth="29.0" />
-            <Label prefHeight="17.0" prefWidth="140.0" text="Roskildefestigvalg 2022" />
-            <Label id="personBanner" fx:id="currentUser" alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="17.0" prefWidth="441.0" text="XXXXXXXXXXXXXXXX" />
+            <Label prefHeight="17.0" prefWidth="570.0" text="Roskildefestigvalg 2022" />
+            <Label id="personBanner" fx:id="currentUser" alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="17.0" prefWidth="676.0" text="XXXXXXXXXXXXXXXX" />
             <Separator opacity="0.0" prefHeight="23.0" prefWidth="43.0" />
          </children>
       </HBox>
@@ -30,8 +30,8 @@
             </MenuBar>
             <AnchorPane prefHeight="358.0" prefWidth="600.0">
                <children>
-                  <ListView fx:id="vagtListe" layoutX="14.0" layoutY="41.0" prefHeight="303.0" prefWidth="573.0" />
-                  <TextField fx:id="siegeBar" layoutX="14.0" layoutY="8.0" onAction="#soeg" prefHeight="25.0" prefWidth="573.0" promptText="Søg..." />
+                  <TextField fx:id="siegeBar" layoutX="14.0" layoutY="8.0" onAction="#soeg" prefHeight="25.0" prefWidth="846.0" promptText="Søg..." />
+                  <TableView fx:id="vagtListe" layoutX="14.0" layoutY="41.0" prefHeight="358.0" prefWidth="846.0" />
                </children></AnchorPane>
          </children>
       </VBox>

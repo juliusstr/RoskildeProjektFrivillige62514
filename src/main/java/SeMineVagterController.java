@@ -1,12 +1,15 @@
 import javafx.event.ActionEvent;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.text.TextAlignment;
+
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class SeMineVagterController {
 
-    public ListView vagtListe;
+    public TableView vagtListe;
     public TextField siegeBar;
     private GUI gui;
     private Person person;
@@ -17,8 +20,47 @@ public class SeMineVagterController {
 
     public void preeload(Person person) {
         this.person = person;
-        DatabaseLink.getVagterFraPerson(person);
-        //vagtListe.getItems().add()
+        vagtListe.getColumns().clear();
+        vagtListe.setEditable(false);
+
+        TableColumn<Person, String> lokationColumn = new TableColumn<>("Lokation");
+        lokationColumn.setCellValueFactory(
+                new PropertyValueFactory<>("lokation"));
+
+        vagtListe.getColumns().addAll(lokationColumn);
+
+        TableColumn<Person, String> startColumn = new TableColumn<>("Vagt start");
+        startColumn.setCellValueFactory(
+                new PropertyValueFactory<>("startTidspunkt"));
+
+        vagtListe.getColumns().addAll(startColumn);
+
+        TableColumn<Person, String> slutColumn = new TableColumn<>("Vagt Slut");
+        slutColumn.setCellValueFactory(
+                new PropertyValueFactory<>("slutTidpunkt"));
+
+        vagtListe.getColumns().addAll(slutColumn);
+
+        TableColumn<Person, String> opgaveColumn = new TableColumn<>("Opgave");
+        opgaveColumn.setCellValueFactory(
+                new PropertyValueFactory<>("opgave"));
+
+        vagtListe.getColumns().addAll(opgaveColumn);
+
+        TableColumn<Person, String> ansvarligColumn = new TableColumn<>("Ansvarlig");
+        ansvarligColumn.setCellValueFactory(
+                new PropertyValueFactory<>("ansvarlig"));
+
+        vagtListe.getColumns().addAll(ansvarligColumn);
+
+        ArrayList<Vagt> vagter = DatabaseLink.getVagterFraPerson(person);
+        System.out.println("der er " + vagter.size() + " vagter");
+        for (int i = 0; i < vagter.size(); i++) {
+            vagtListe.getItems().add(vagter.get(i));
+        }
+
+
+
     }
 
     public void logud(ActionEvent actionEvent) throws IOException {
