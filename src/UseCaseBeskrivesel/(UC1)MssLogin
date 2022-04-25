@@ -1,7 +1,7 @@
 Main Success Scenario for at login:
 
 1 Brugeren Kører application (RoskildeProjekt)
-2 Application viser Login fældeterne
+2 Application viser Login siden.
 3 Brugeren Indtast login oplysninger.
 4 Brugeren er logget ind i application (RoskildeProjekt) og application viser Homepage.
 
