@@ -28,4 +28,9 @@ public class AnsvarligHomepsgeController {
         Person person = DatabaseLink.personHashMap.get(currentUser.getText().split(" ")[0]);
         gui.setAktivtetAdminScene(person);
     }
+
+    public void vagterAnsvarlig(ActionEvent actionEvent) throws IOException {
+        Person person = DatabaseLink.personHashMap.get(currentUser.getText().split(" ")[0]);
+        gui.setSeMineVagterAnsvarlig(person);
+    }
 }

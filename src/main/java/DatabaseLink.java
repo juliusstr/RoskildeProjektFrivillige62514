@@ -99,4 +99,16 @@ public class DatabaseLink {
         }
         return vagter;
     }
+
+    public static ArrayList<Vagt> getAllVagter(){
+        ArrayList<Vagt> vagter  = new ArrayList<>();
+        for (int i = 0; i < aktivteter.size(); i++) {
+            int n = aktivteter.get(i).getVagter().size();
+            ArrayList<Vagt> aktivitetVagter = aktivteter.get(i).getVagter();
+            for (int j = 0; j < n; j++) {
+                vagter.add(aktivitetVagter.get(j));
+            }
+        }
+        return vagter;
+    }
 }

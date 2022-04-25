@@ -19,12 +19,12 @@
               <menus>
                   <Menu mnemonicParsing="false" text="Aktiviteter">
                     <items>
-                      <MenuItem mnemonicParsing="false" text="Akivitet admin" onAction="#aktivtetAdmin" />
+                      <MenuItem mnemonicParsing="false" onAction="#aktivtetAdmin" text="Akivitet admin" />
                     </items>
                   </Menu>
                 <Menu mnemonicParsing="false" text="Vagter">
                      <items>
-                        <MenuItem mnemonicParsing="false" text="Unspecified Action" />
+                        <MenuItem mnemonicParsing="false" onAction="#vagterAnsvarlig" text="Se vagter" />
                      </items></Menu>
                   <Menu fx:id="logUd" mnemonicParsing="false" text="Min Konto">
                      <items>

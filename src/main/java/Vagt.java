@@ -64,4 +64,8 @@ public class Vagt implements Serializable {
         return DatabaseLink.getPersonFromID(aktivitet.getAnsvarlig()).print();
     }
 
+    public String getFriviligPerson(){
+        return DatabaseLink.getPersonFromID(frivillig).print();
+    }
+
 }
