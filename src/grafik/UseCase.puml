@@ -4,9 +4,8 @@ left to right direction
 
 :Ansvarlig: as Ansvarlig
 :Frivilig: as Frivilig
-:Person: as Person
 
-Person --> (Register som frivilig)
+Frivilig --> (Register som frivilig)
 Frivilig --> (Se vagtplan)
 Frivilig --> (Rediger kontakt oplysninger)
 Ansvarlig --> (Rediger i Frivilige oplysinnger)
