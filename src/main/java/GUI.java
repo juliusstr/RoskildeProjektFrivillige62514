@@ -148,4 +148,17 @@ public class GUI extends Application {
         controller.setGUI(this);
         controller.preeload(person);
     }
+
+    public void setSeFriviligAnsvarlig(Person person) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("AnsvarligRedigereFrivilige.fxml"));
+        VBox box = loader.load();
+        SeFriviligAnsvarligController controller = loader.getController();
+
+        ((Label) ((HBox) box.getChildren().get(0)).getChildren().get(2)).setText(person.getRoskildeId() + " - " + person.getNavn() + " " + person.getEfternavn());
+        Scene scene = new Scene(box,box.getPrefWidth(), box.getPrefHeight());
+        stage.setScene(scene);
+
+        controller.setGUI(this);
+        controller.preeload(person);
+    }
 }

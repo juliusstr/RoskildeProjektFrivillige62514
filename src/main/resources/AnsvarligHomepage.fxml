@@ -28,7 +28,7 @@
                      </items></Menu>
                   <Menu mnemonicParsing="false" text="Frivilige">
                     <items>
-                      <MenuItem mnemonicParsing="false" text="Redigere i frivilige information" />
+                      <MenuItem mnemonicParsing="false" onAction="#seFriviligAnsvarlig" text="Redigere i frivilige information" />
                     </items>
                   </Menu>
                   <Menu fx:id="logUd" mnemonicParsing="false" text="Min Konto">

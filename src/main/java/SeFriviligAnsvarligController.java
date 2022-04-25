@@ -1,22 +1,20 @@
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
-import javafx.scene.layout.Pane;
 
+import java.awt.*;
 import java.io.IOException;
 
-public class AnsvarligHomepsgeController {
-    public Label currentUser;
+public class SeFriviligAnsvarligController {
     private GUI gui;
-
-    public void logud(ActionEvent actionEvent) throws IOException {
-        gui.setLoginScene();
-    }
+    public Label currentUser;
 
     public void setGUI(GUI gui) {
         this.gui = gui;
     }
 
+    public void preeload(Person person) {
+        //todo lav mig
+    }
 
     public void mineInformationer(ActionEvent actionEvent) throws IOException {
         Person person = DatabaseLink.personHashMap.get(currentUser.getText().split(" ")[0]);
@@ -37,5 +35,9 @@ public class AnsvarligHomepsgeController {
     public void seFriviligAnsvarlig(ActionEvent actionEvent) throws IOException {
         Person person = DatabaseLink.personHashMap.get(currentUser.getText().split(" ")[0]);
         gui.setSeFriviligAnsvarlig(person);
+    }
+
+    public void logud(ActionEvent actionEvent) throws IOException {
+        gui.setLoginScene();
     }
 }

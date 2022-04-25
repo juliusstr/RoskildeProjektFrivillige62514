@@ -176,4 +176,9 @@ public class AnsvarligVagterController {
         Person person = DatabaseLink.personHashMap.get(currentUser.getText().split(" ")[0]);
         gui.setAnsvarligMineInformationer(person);
     }
+
+    public void seFriviligAnsvarlig(ActionEvent actionEvent) throws IOException {
+        Person person = DatabaseLink.personHashMap.get(currentUser.getText().split(" ")[0]);
+        gui.setSeFriviligAnsvarlig(person);
+    }
 }
