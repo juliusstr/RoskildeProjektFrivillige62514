@@ -1,0 +1,7 @@
+Main Success Scenario for at se vagt plan:
+
+Prereq: Bruger er logget ind. (UC1)
+
+1. Application viser homepage siden.
+2. Brugeren klikker på Vagter menuen og vælger mine vagter på menu listen.
+3. Application viser min vagter siden.

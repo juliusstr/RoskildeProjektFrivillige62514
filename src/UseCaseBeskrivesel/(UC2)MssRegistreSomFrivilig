@@ -1,0 +1,14 @@
+Main Success Scenario for at registering som frivillig:
+
+1 Brugeren Kører application (RoskildeProjekt)
+2 Application viser Login siden.
+3 Brugeren klikker på registre som frivillig knappen.
+4 Application viser registre som frivillig siden.
+5 Brugeren indtaster bruger/acount oplysninger.
+6 Brugeren klikker på registre knappen.
+7 Application gemmer brugeren oplysninger og skifter til login siden.
+
+
+5a.1 Ugyldigt bruger information - Systmet åbner en dialogbox somforklare brugen hvilket indstastnings fejl af oplysninger der er begået.
+5b.2 Systemet sletter password og gentag password felterne.
+
