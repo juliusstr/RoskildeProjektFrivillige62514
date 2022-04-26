@@ -1,8 +1,14 @@
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.regex.Pattern;
@@ -17,6 +23,7 @@ public class AnsvarligMineInformationerController {
     public Button gemBnt;
     public Button redigerBtn;
     public Button passwordBtn;
+    public TextField bDag;
     private GUI gui;
 
     public void setGUI(GUI gui) {
@@ -29,16 +36,16 @@ public class AnsvarligMineInformationerController {
         tlfNr.setText(person.getTlfNr());
         email.setText(person.getEMail());
         personRoskildeID.setText(person.getRoskildeId());
+        bDag.setText(person.getBday());
 
         navn.setDisable(true);
         efternavn.setDisable(true);
         tlfNr.setDisable(true);
         email.setDisable(true);
+        bDag.setDisable(true);
 
         gemBnt.setVisible(false);
 
-        Tooltip t = new Tooltip("WIP. Kommer i senere versioner");
-        Tooltip.install(passwordBtn, t);//todo lav skift password
 
     }
 
@@ -53,6 +60,7 @@ public class AnsvarligMineInformationerController {
         efternavn.setDisable(false);
         tlfNr.setDisable(false);
         email.setDisable(false);
+        bDag.setDisable(false);
 
         redigerBtn.setDisable(true);
     }
@@ -81,6 +89,7 @@ public class AnsvarligMineInformationerController {
             person.setEfternavn(efternavn.getText());
             person.setTlfNr(tlfNr.getText());
             person.setEMail(email.getText());
+            person.setBday(bDag.getText());
 
             gui.setAnsvarligMineInformationer(person);
         } else {
@@ -119,5 +128,23 @@ public class AnsvarligMineInformationerController {
     public void seFriviligAnsvarlig(ActionEvent actionEvent) throws IOException {
         Person person = DatabaseLink.personHashMap.get(currentUser.getText().split(" ")[0]);
         gui.setSeFriviligAnsvarlig(person);
+    }
+
+    public void skiftPassord() throws IOException {
+        Person person = DatabaseLink.personHashMap.get(currentUser.getText().split(" ")[0]);
+
+        final Stage dialog = new Stage();
+        dialog.initModality(Modality.APPLICATION_MODAL);
+        dialog.initOwner(gui.stage);
+        FXMLLoader loadrer = new FXMLLoader(getClass().getResource("SkiftPasswordPopop.fxml"));
+        AnchorPane dialogVbox = loadrer.load();
+        skiftPasswordPopopControler controler = loadrer.getController();
+        controler.stage = dialog;
+        controler.ansvarligMineInformationerController = this;
+        controler.preeload(person);
+        Scene dialogScene = new Scene(dialogVbox, dialogVbox.getPrefWidth(), dialogVbox.getPrefHeight());
+        dialog.setScene(dialogScene);
+        dialog.setResizable(false);
+        dialog.show();
     }
 }

@@ -1,4 +1,6 @@
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class Person implements Serializable {
@@ -72,5 +74,17 @@ public class Person implements Serializable {
 
     public String print(){
         return navn + " " + efternavn + "   TLF: " + tlfNr;
+    }
+
+    public String getBday() {
+        return bDay;
+    }
+
+    public void setBday(String text) {
+        bDay = text;
+    }
+
+    public void setPassword(String text) {
+        password = text;
     }
 }

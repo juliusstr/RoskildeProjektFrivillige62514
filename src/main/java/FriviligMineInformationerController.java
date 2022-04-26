@@ -1,8 +1,12 @@
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Tooltip;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.regex.Pattern;
@@ -17,6 +21,7 @@ public class FriviligMineInformationerController {
     public Button redigerBtn;
     public Button passwordBtn;
     public Label currentUser;
+    public Label bdag;
     private GUI gui;
 
     public void setGUI(GUI gui) {
@@ -29,16 +34,14 @@ public class FriviligMineInformationerController {
         tlfNr.setText(person.getTlfNr());
         email.setText(person.getEMail());
         personRoskildeID.setText(person.getRoskildeId());
+        bdag.setText(person.getBday());
 
         navn.setDisable(true);
         efternavn.setDisable(true);
         tlfNr.setDisable(true);
         email.setDisable(true);
-
         gemBnt.setVisible(false);
 
-        Tooltip t = new Tooltip("WIP. Kommer i senere versioner");
-        Tooltip.install(passwordBtn, t);//todo lav skift password
 
     }
 
@@ -105,4 +108,21 @@ public class FriviligMineInformationerController {
         gui.setfriviligMineVagterScene(person);
     }
 
+    public void skiftPassword(ActionEvent actionEvent) throws IOException {
+        Person person = DatabaseLink.personHashMap.get(currentUser.getText().split(" ")[0]);
+
+        final Stage dialog = new Stage();
+        dialog.initModality(Modality.APPLICATION_MODAL);
+        dialog.initOwner(gui.stage);
+        FXMLLoader loadrer = new FXMLLoader(getClass().getResource("FriviligSkiftPasswordPopop.fxml"));
+        AnchorPane dialogVbox = loadrer.load();
+        FriviligFskiftPasswordPopopControler controler = loadrer.getController();
+        controler.stage = dialog;
+        controler.friviligMineInformationerController = this;
+        controler.preeload(person);
+        Scene dialogScene = new Scene(dialogVbox, dialogVbox.getPrefWidth(), dialogVbox.getPrefHeight());
+        dialog.setScene(dialogScene);
+        dialog.setResizable(false);
+        dialog.show();
+    }
 }

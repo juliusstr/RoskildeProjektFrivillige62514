@@ -1,10 +1,23 @@
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 import java.awt.*;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class SeFriviligAnsvarligController {
+    public ListView friviligListe;
+    public Button rediger;
+    public TextField sogeBar;
     private GUI gui;
     public Label currentUser;
 
@@ -13,7 +26,10 @@ public class SeFriviligAnsvarligController {
     }
 
     public void preeload(Person person) {
-        //todo lav mig
+
+        DatabaseLink.personHashMap.forEach((k,v) ->
+                friviligListe.getItems().add("" + v.getRoskildeId() + " - " + v.getNavn() + " " + v.getEfternavn() + "   TLF: " + v.getTlfNr() + "   Email: " + v.getEMail())
+                );
     }
 
     public void mineInformationer(ActionEvent actionEvent) throws IOException {
@@ -39,5 +55,51 @@ public class SeFriviligAnsvarligController {
 
     public void logud(ActionEvent actionEvent) throws IOException {
         gui.setLoginScene();
+    }
+
+    public void rediger(ActionEvent actionEvent) throws IOException {
+        if (friviligListe.getSelectionModel().getSelectedIndex() != -1) {
+            String id = (String) friviligListe.getItems().get(friviligListe.getSelectionModel().getSelectedIndex());
+            id = id.split(" - ")[0];
+            Person person = DatabaseLink.getPersonFromID(id);
+
+            final Stage dialog = new Stage();
+            dialog.initModality(Modality.APPLICATION_MODAL);
+            dialog.initOwner(gui.stage);
+            FXMLLoader loadrer = new FXMLLoader(getClass().getResource("AnsvarligRedigerFriviligInformationerPopop.fxml"));
+            VBox dialogVbox = loadrer.load();
+            AnsvarligRedigerFriviligInformationerPopopController controler = loadrer.getController();
+            controler.stage = dialog;
+            controler.seFriviligAnsvarligController = this;
+            controler.preeload(person);
+            Scene dialogScene = new Scene(dialogVbox, dialogVbox.getPrefWidth(), dialogVbox.getPrefHeight());
+            dialog.setScene(dialogScene);
+            dialog.setResizable(false);
+            dialog.show();
+        }
+    }
+
+    public void soege() {
+        ArrayList<Person> personer = new ArrayList<>();
+        DatabaseLink.personHashMap.forEach((v,k) -> personer.add(k));
+        personer.removeIf((e) -> !(e.getRoskildeId().contains(sogeBar.getText()) || e.getNavn().contains(sogeBar.getText()) || e.getEfternavn().contains(sogeBar.getText()) || e.getTlfNr().contains(sogeBar.getText()) || e.getEMail().contains(sogeBar.getText())));
+        friviligListe.getItems().clear();
+        for (int i = 0; i < personer.size(); i++) {
+            Person v = personer.get(i);
+            friviligListe.getItems().add("" + v.getRoskildeId() + " - " + v.getNavn() + " " + v.getEfternavn() + "   TLF: " + v.getTlfNr() + "   Email: " + v.getEMail());
+        }
+
+    }
+
+    public void done() {
+        sogeBar.setText("");
+        ArrayList<Person> personer = new ArrayList<>();
+        DatabaseLink.personHashMap.forEach((v,k) -> personer.add(k));
+        personer.removeIf((e) -> !(e.getRoskildeId().contains(sogeBar.getText()) || e.getNavn().contains(sogeBar.getText()) || e.getEfternavn().contains(sogeBar.getText()) || e.getTlfNr().contains(sogeBar.getText()) || e.getEMail().contains(sogeBar.getText())));
+        friviligListe.getItems().clear();
+        for (int i = 0; i < personer.size(); i++) {
+            Person v = personer.get(i);
+            friviligListe.getItems().add("" + v.getRoskildeId() + " - " + v.getNavn() + " " + v.getEfternavn() + "   TLF: " + v.getTlfNr() + "   Email: " + v.getEMail());
+        }
     }
 }

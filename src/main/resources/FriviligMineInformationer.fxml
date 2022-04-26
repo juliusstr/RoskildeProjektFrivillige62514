@@ -50,7 +50,7 @@
             <Label text="Fornavn" GridPane.columnIndex="1" />
             <FlowPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4">
                <children>
-                  <Button fx:id="passwordBtn" mnemonicParsing="false" prefHeight="25.0" prefWidth="140.0" text="Skift Passoword">
+                  <Button onAction="#skiftPassword" fx:id="passwordBtn" mnemonicParsing="false" prefHeight="25.0" prefWidth="140.0" text="Skift Passoword">
                      <FlowPane.margin>
                         <Insets />
                      </FlowPane.margin></Button>
@@ -68,7 +68,7 @@
             <Button fx:id="gemBnt" mnemonicParsing="false" onAction="#gemInfo" prefHeight="25.0" prefWidth="140.0" text="Gem" GridPane.columnIndex="4" GridPane.rowIndex="7" />
             <Label fx:id="personRoskildeID" prefHeight="17.0" prefWidth="367.0" text="XXXXXXXXX" GridPane.columnIndex="2" GridPane.rowIndex="5" />
             <Label text="Fødslesdato" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <Label text="YYYY-MM-DD" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <Label fx:id="bdag" text="YYYY-MM-DD" GridPane.columnIndex="2" GridPane.rowIndex="4" />
          </children>
       </GridPane>
    </children>

@@ -1,3 +1,4 @@
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -79,7 +80,7 @@ public class SeMineVagterAnsvarligController {
         gui.setFriviligeInformationerScene(person);
     }
 
-    public void soeg() {
+    public void soege() {
         ArrayList<Vagt> vagter = DatabaseLink.getAllVagter();
         vagter.removeIf((e) -> !(e.getLokation().contains(soegeBar.getText()) || e.getStartTidspunkt().contains(soegeBar.getText()) || e.getSlutTidpunkt().contains(soegeBar.getText()) || e.getOpgave().contains(soegeBar.getText()) || e.getAnsvarlig().contains(soegeBar.getText()) || e.getFriviligPerson().contains(soegeBar.getText())));
         vagtListe.getItems().clear();

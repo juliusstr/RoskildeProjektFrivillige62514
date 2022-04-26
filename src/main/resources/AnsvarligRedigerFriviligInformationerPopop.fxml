@@ -1,18 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<VBox prefHeight="293.0" prefWidth="513.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FriviligMineInformationerController">
+<VBox prefHeight="293.0" prefWidth="513.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AnsvarligRedigerFriviligInformationerPopopController">
    <children>
       <HBox prefHeight="0.0" prefWidth="600.0">
          <children>
@@ -58,13 +49,14 @@
             <Label fx:id="personRoskildeID" prefHeight="17.0" prefWidth="367.0" text="XXXXXXXXX" GridPane.columnIndex="3" GridPane.rowIndex="7" />
             <Label text="Fødslesdato" GridPane.columnIndex="2" GridPane.rowIndex="5" />
             <Label text="Password" GridPane.columnIndex="2" GridPane.rowIndex="6" />
-            <TextField GridPane.columnIndex="3" GridPane.rowIndex="6" />
+            <TextField fx:id="password" GridPane.columnIndex="3" GridPane.rowIndex="6" />
             <AnchorPane GridPane.columnIndex="3" GridPane.rowIndex="5">
                <children>
-                  <DatePicker prefHeight="25.0" prefWidth="168.0" />
-                  <Label layoutX="178.0" layoutY="5.0" text="DD/MM/ÅÅÅÅ" />
+                  <Label layoutX="178.0" layoutY="5.0" text="ÅÅÅÅ-MM-DD" />
+                  <TextField fx:id="bdag" prefHeight="25.0" prefWidth="161.0" />
                </children>
             </AnchorPane>
+            <Button mnemonicParsing="false" onAction="#tIlbage" prefHeight="25.0" prefWidth="90.0" text="Tilbage" GridPane.columnIndex="2" GridPane.rowIndex="9" />
          </children>
       </GridPane>
    </children>

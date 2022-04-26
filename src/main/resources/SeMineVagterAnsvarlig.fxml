@@ -41,7 +41,7 @@
             </MenuBar>
             <AnchorPane prefHeight="358.0" prefWidth="600.0">
                <children>
-                  <TextField fx:id="soegeBar" layoutX="14.0" layoutY="8.0" onKeyTyped="#soeg" prefHeight="25.0" prefWidth="846.0" promptText="Søg..." />
+                  <TextField fx:id="soegeBar" layoutX="14.0" layoutY="8.0" onKeyTyped="#soege" prefHeight="25.0" prefWidth="846.0" promptText="Søg..." />
                   <TableView fx:id="vagtListe" layoutX="14.0" layoutY="41.0" prefHeight="358.0" prefWidth="846.0" />
                </children></AnchorPane>
          </children>

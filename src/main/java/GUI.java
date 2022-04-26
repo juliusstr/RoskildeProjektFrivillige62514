@@ -16,6 +16,10 @@ import java.io.*;
 import java.net.URL;
 import java.util.HashMap;
 
+//todo lave fil navne som konstanter
+
+//todo flyt fxml til mapper så det er nemmer at fidne rundt mellem frivilige og ansvarlige
+
 public class GUI extends Application {
 
 

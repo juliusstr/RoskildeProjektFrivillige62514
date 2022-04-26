@@ -4,6 +4,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -19,7 +20,7 @@ public class LoginController {
     public TextField password;
     private GUI gui;
 
-    public void clickedMouseLogin(MouseEvent mouseEvent) throws IOException {
+    public void clickedMouseLogin() throws IOException {
         Person person = null;
         try {
             person = DatabaseLink.personHashMap.get(brugerNavn.getText());
@@ -49,5 +50,29 @@ public class LoginController {
 
     public void setGUI(GUI gui) {
         this.gui = gui;
+    }
+
+    public void keyLogin(KeyEvent keyEvent) throws IOException {
+        if (keyEvent.getCharacter() == "\n") {
+            Person person = null;
+            try {
+                person = DatabaseLink.personHashMap.get(brugerNavn.getText());
+                if (person.getPassword().equals(password.getText())) {
+                    if (person.getRoskildeId().charAt(0) == 'A') {
+                        gui.setAnsvarligHomepageScene(person);
+                    } else {
+                        gui.setFriviligHomepageScene(person);
+                    }
+                } else {
+                    brugerNavn.setText("");
+                    password.setText("");
+                    GUI.infoBox(null, "Ugyldigt kode og eller ID");
+                }
+            } catch (NullPointerException e) {
+                brugerNavn.setText("");
+                password.setText("");
+                GUI.infoBox(null, "Ugyldigt kode og eller ID");
+            }
+        }
     }
 }

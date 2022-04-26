@@ -1,18 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="441.0" prefWidth="634.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SeFriviligAnsvarligController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="441.0" prefWidth="634.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SeFriviligAnsvarligController">
    <children>
       <HBox prefHeight="0.0" prefWidth="600.0">
          <children>
@@ -50,9 +41,9 @@
              </MenuBar>
             <AnchorPane prefHeight="386.0" prefWidth="682.0">
                <children>
-                  <TextField layoutX="16.0" layoutY="6.0" prefHeight="25.0" prefWidth="603.0" text="Søg..." />
-                  <ListView layoutX="18.0" layoutY="49.0" prefHeight="281.0" prefWidth="603.0" />
-                  <Button layoutX="541.0" layoutY="347.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" text="Rediger" />
+                  <TextField fx:id="sogeBar" layoutX="16.0" layoutY="6.0" onKeyTyped="#soege" prefHeight="25.0" prefWidth="603.0" promptText="Søg..." />
+                  <ListView fx:id="friviligListe" layoutX="18.0" layoutY="49.0" prefHeight="281.0" prefWidth="603.0" />
+                  <Button fx:id="rediger" layoutX="541.0" layoutY="347.0" mnemonicParsing="false" onAction="#rediger" prefHeight="25.0" prefWidth="78.0" text="Rediger" />
                </children></AnchorPane>
          </children>
       </VBox>
