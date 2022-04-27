@@ -1,15 +1,16 @@
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
+package controller.frivilig;
+
+import Main.*;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.text.TextAlignment;
 
 
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class SeMineVagterAnsvarligController {
-    public Label currentUser;
+public class SeMineVagterController {
+
     public TableView vagtListe;
     public TextField soegeBar;
     private GUI gui;
@@ -48,12 +49,6 @@ public class SeMineVagterAnsvarligController {
 
         vagtListe.getColumns().addAll(opgaveColumn);
 
-        TableColumn<Person, String> friviligColumn = new TableColumn<>("Frivilig");
-        friviligColumn.setCellValueFactory(
-                new PropertyValueFactory<>("friviligPerson"));
-
-        vagtListe.getColumns().addAll(friviligColumn);
-
         TableColumn<Person, String> ansvarligColumn = new TableColumn<>("Ansvarlig");
         ansvarligColumn.setCellValueFactory(
                 new PropertyValueFactory<>("ansvarlig"));
@@ -62,7 +57,7 @@ public class SeMineVagterAnsvarligController {
 
         vagtListe.setPlaceholder( new Label("Der er ingen vager at se her.\nPrøv evt. at søge på noget andet."));
 
-        ArrayList<Vagt> vagter = DatabaseLink.getAllVagter();
+        ArrayList<Vagt> vagter = DatabaseLink.getVagterFraPerson(person);
         System.out.println("der er " + vagter.size() + " vagter");
         for (int i = 0; i < vagter.size(); i++) {
             vagtListe.getItems().add(vagter.get(i));
@@ -80,33 +75,13 @@ public class SeMineVagterAnsvarligController {
         gui.setFriviligeInformationerScene(person);
     }
 
-    public void soege() {
-        ArrayList<Vagt> vagter = DatabaseLink.getAllVagter();
-        vagter.removeIf((e) -> !(e.getLokation().contains(soegeBar.getText()) || e.getStartTidspunkt().contains(soegeBar.getText()) || e.getSlutTidpunkt().contains(soegeBar.getText()) || e.getOpgave().contains(soegeBar.getText()) || e.getAnsvarlig().contains(soegeBar.getText()) || e.getFriviligPerson().contains(soegeBar.getText())));
+    public void soeg() {
+        ArrayList<Vagt> vagter = DatabaseLink.getVagterFraPerson(person);
+        vagter.removeIf((e) -> !(e.getLokation().contains(soegeBar.getText()) || e.getStartTidspunkt().contains(soegeBar.getText()) || e.getSlutTidpunkt().contains(soegeBar.getText()) || e.getOpgave().contains(soegeBar.getText()) || e.getAnsvarlig().contains(soegeBar.getText())));
         vagtListe.getItems().clear();
         for (int i = 0; i < vagter.size(); i++) {
             vagtListe.getItems().add(vagter.get(i));
         }
 
-    }
-
-    public void aktivtetAdmin(ActionEvent actionEvent) throws IOException {
-        Person person = DatabaseLink.personHashMap.get(currentUser.getText().split(" ")[0]);
-        gui.setAktivtetAdminScene(person);
-    }
-
-    public void vagterAnsvarlig(ActionEvent actionEvent) throws IOException {
-        Person person = DatabaseLink.personHashMap.get(currentUser.getText().split(" ")[0]);
-        gui.setSeMineVagterAnsvarlig(person);
-    }
-
-    public void mineInformationer(ActionEvent actionEvent) throws IOException {
-        Person person = DatabaseLink.personHashMap.get(currentUser.getText().split(" ")[0]);
-        gui.setAnsvarligMineInformationer(person);
-    }
-
-    public void seFriviligAnsvarlig(ActionEvent actionEvent) throws IOException {
-        Person person = DatabaseLink.personHashMap.get(currentUser.getText().split(" ")[0]);
-        gui.setSeFriviligAnsvarlig(person);
     }
 }

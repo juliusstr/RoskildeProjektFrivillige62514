@@ -1,3 +1,8 @@
+package controller.ansvarlig;
+
+import Main.*;
+import controller.ansvarlig.popop.AktivitetPopopControler;
+import controller.ansvarlig.popop.VagtPopopControler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -29,7 +34,7 @@ public class AnsvarligVagterController {
         final Stage dialog = new Stage();
         dialog.initModality(Modality.APPLICATION_MODAL);
         dialog.initOwner(gui.stage);
-        FXMLLoader loadrer = new FXMLLoader(getClass().getResource("AktivitetPopop.fxml"));
+        FXMLLoader loadrer = new FXMLLoader(getClass().getClassLoader().getResource(GUI.ansvarligPopopNyAktivitetPath));
         VBox dialogVbox = loadrer.load();
         AktivitetPopopControler controler = loadrer.getController();
         controler.stage = dialog;
@@ -66,7 +71,6 @@ public class AnsvarligVagterController {
                     break;
                 }
             }
-            System.err.println("Vagt er slettet");
             done();
         }
     }
@@ -87,7 +91,7 @@ public class AnsvarligVagterController {
             final Stage dialog = new Stage();
             dialog.initModality(Modality.APPLICATION_MODAL);
             dialog.initOwner(gui.stage);
-            FXMLLoader loadrer = new FXMLLoader(getClass().getResource("VagtPopop.fxml"));
+            FXMLLoader loadrer = new FXMLLoader(getClass().getClassLoader().getResource(GUI.ansvarligPopopNyVagt));
             VBox dialogVbox = loadrer.load();
             VagtPopopControler controler = loadrer.getController();
             controler.stage = dialog;

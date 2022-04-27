@@ -1,14 +1,15 @@
+package controller.frivilig.popop;
+
+import Main.*;
+import controller.frivilig.FriviligMineInformationerController;
 import javafx.event.ActionEvent;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import java.util.regex.Pattern;
-
-public class skiftPasswordPopopControler {
+public class FriviligFskiftPasswordPopopControler {
 
     public Stage stage;
-    public AnsvarligMineInformationerController ansvarligMineInformationerController;
+    public FriviligMineInformationerController friviligMineInformationerController;
     public TextField password1;
     public TextField password2;
     private Person person;

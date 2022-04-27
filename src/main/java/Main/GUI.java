@@ -24,7 +24,7 @@ import java.io.*;
 
 public class GUI extends Application {
 
-    public static final String personMapPath = "Main.Person.map";
+    public static final String personMapPath = "Person.map";
     public static final String aktivitetListPath = "Aktivtet.list";
 
     public static final String loginPath = "login.fxml";

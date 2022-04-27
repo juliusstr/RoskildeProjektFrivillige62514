@@ -1,3 +1,6 @@
+package controller.frivilig;
+
+import Main.*;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;

@@ -1,10 +1,11 @@
+package controller.ansvarlig.popop;
+
+import Main.*;
+import controller.ansvarlig.SeFriviligAnsvarligController;
 import javafx.event.ActionEvent;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
-import java.time.LocalDate;
 
 public class AnsvarligRedigerFriviligInformationerPopopController {
 

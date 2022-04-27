@@ -1,3 +1,7 @@
+package controller.ansvarlig;
+
+import Main.*;
+import controller.ansvarlig.popop.AnsvarligRedigerFriviligInformationerPopopController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -5,12 +9,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -27,7 +29,7 @@ public class SeFriviligAnsvarligController {
 
     public void preeload(Person person) {
 
-        DatabaseLink.personHashMap.forEach((k,v) ->
+        DatabaseLink.personHashMap.forEach((k, v) ->
                 friviligListe.getItems().add("" + v.getRoskildeId() + " - " + v.getNavn() + " " + v.getEfternavn() + "   TLF: " + v.getTlfNr() + "   Email: " + v.getEMail())
                 );
     }
@@ -66,7 +68,7 @@ public class SeFriviligAnsvarligController {
             final Stage dialog = new Stage();
             dialog.initModality(Modality.APPLICATION_MODAL);
             dialog.initOwner(gui.stage);
-            FXMLLoader loadrer = new FXMLLoader(getClass().getResource("AnsvarligRedigerFriviligInformationerPopop.fxml"));
+            FXMLLoader loadrer = new FXMLLoader(getClass().getClassLoader().getResource(GUI.ansvarligPopopRedigerFriviligInformationer));
             VBox dialogVbox = loadrer.load();
             AnsvarligRedigerFriviligInformationerPopopController controler = loadrer.getController();
             controler.stage = dialog;

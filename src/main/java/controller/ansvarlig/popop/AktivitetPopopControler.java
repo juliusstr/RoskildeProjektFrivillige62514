@@ -1,3 +1,7 @@
+package controller.ansvarlig.popop;
+
+import Main.*;
+import controller.ansvarlig.AnsvarligVagterController;
 import javafx.event.ActionEvent;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextArea;
@@ -5,7 +9,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.util.Map;
-import java.util.regex.Pattern;
 
 public class AktivitetPopopControler {
     public Aktivitet newAktivitet;

@@ -1,2 +1,4 @@
-/person.ser
-/aktiviteter.ser
+/target/
+/.idea/
+/Aktivtet.list
+/Person.map

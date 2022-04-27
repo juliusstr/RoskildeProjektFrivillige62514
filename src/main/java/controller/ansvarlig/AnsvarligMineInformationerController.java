@@ -1,3 +1,7 @@
+package controller.ansvarlig;
+
+import Main.*;
+import controller.ansvarlig.popop.skiftPasswordPopopControler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -9,9 +13,9 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.regex.Pattern;
 
-public class FriviligMineInformationerController {
+public class AnsvarligMineInformationerController {
+    public Label currentUser;
     public TextField navn;
     public TextField efternavn;
     public TextField tlfNr;
@@ -20,26 +24,27 @@ public class FriviligMineInformationerController {
     public Button gemBnt;
     public Button redigerBtn;
     public Button passwordBtn;
-    public Label currentUser;
-    public Label bdag;
+    public TextField bDag;
     private GUI gui;
 
     public void setGUI(GUI gui) {
         this.gui = gui;
     }
 
-    public void preLoad(Person person){
+    public void preLoad(Person person) {
         navn.setText(person.getNavn());
         efternavn.setText(person.getEfternavn());
         tlfNr.setText(person.getTlfNr());
         email.setText(person.getEMail());
         personRoskildeID.setText(person.getRoskildeId());
-        bdag.setText(person.getBday());
+        bDag.setText(person.getBday());
 
         navn.setDisable(true);
         efternavn.setDisable(true);
         tlfNr.setDisable(true);
         email.setDisable(true);
+        bDag.setDisable(true);
+
         gemBnt.setVisible(false);
 
 
@@ -56,6 +61,7 @@ public class FriviligMineInformationerController {
         efternavn.setDisable(false);
         tlfNr.setDisable(false);
         email.setDisable(false);
+        bDag.setDisable(false);
 
         redigerBtn.setDisable(true);
     }
@@ -84,7 +90,9 @@ public class FriviligMineInformationerController {
             person.setEfternavn(efternavn.getText());
             person.setTlfNr(tlfNr.getText());
             person.setEMail(email.getText());
-            gui.setFriviligeInformationerScene(person);
+            person.setBday(bDag.getText());
+
+            gui.setAnsvarligMineInformationer(person);
         } else {
             String error = "";
             if (!bNavn) {
@@ -103,22 +111,37 @@ public class FriviligMineInformationerController {
         }
     }
 
-    public void seMineVagter(ActionEvent actionEvent) throws IOException {
+    public void aktivtetAdmin(ActionEvent actionEvent) throws IOException {
         Person person = DatabaseLink.personHashMap.get(currentUser.getText().split(" ")[0]);
-        gui.setfriviligMineVagterScene(person);
+        gui.setAktivtetAdminScene(person);
     }
 
-    public void skiftPassword(ActionEvent actionEvent) throws IOException {
+    public void vagterAnsvarlig(ActionEvent actionEvent) throws IOException {
+        Person person = DatabaseLink.personHashMap.get(currentUser.getText().split(" ")[0]);
+        gui.setSeMineVagterAnsvarlig(person);
+    }
+
+    public void mineInformationer(ActionEvent actionEvent) throws IOException {
+        Person person = DatabaseLink.personHashMap.get(currentUser.getText().split(" ")[0]);
+        gui.setAnsvarligMineInformationer(person);
+    }
+
+    public void seFriviligAnsvarlig(ActionEvent actionEvent) throws IOException {
+        Person person = DatabaseLink.personHashMap.get(currentUser.getText().split(" ")[0]);
+        gui.setSeFriviligAnsvarlig(person);
+    }
+
+    public void skiftPassord() throws IOException {
         Person person = DatabaseLink.personHashMap.get(currentUser.getText().split(" ")[0]);
 
         final Stage dialog = new Stage();
         dialog.initModality(Modality.APPLICATION_MODAL);
         dialog.initOwner(gui.stage);
-        FXMLLoader loadrer = new FXMLLoader(getClass().getResource("FriviligSkiftPasswordPopop.fxml"));
+        FXMLLoader loadrer = new FXMLLoader(getClass().getClassLoader().getResource(GUI.ansvarligPopopSkiftPassword));
         AnchorPane dialogVbox = loadrer.load();
-        FriviligFskiftPasswordPopopControler controler = loadrer.getController();
+        skiftPasswordPopopControler controler = loadrer.getController();
         controler.stage = dialog;
-        controler.friviligMineInformationerController = this;
+        controler.ansvarligMineInformationerController = this;
         controler.preeload(person);
         Scene dialogScene = new Scene(dialogVbox, dialogVbox.getPrefWidth(), dialogVbox.getPrefHeight());
         dialog.setScene(dialogScene);

@@ -1,3 +1,6 @@
+package controller.ansvarlig;
+
+import Main.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
