@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.frivilig.FriviligMineInformationerController">
+   <children>
+      <HBox prefHeight="0.0" prefWidth="600.0">
+         <children>
+            <Separator opacity="0.0" prefHeight="0.0" prefWidth="29.0" />
+            <Label prefHeight="17.0" prefWidth="140.0" text="Roskildefestigvalg 2022" />
+            <Label id="personBanner" fx:id="currentUser" alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="17.0" prefWidth="441.0" text="XXXXXXXXXXXXXXXX" />
+            <Separator opacity="0.0" prefHeight="23.0" prefWidth="43.0" />
+         </children>
+      </HBox>
+      <MenuBar>
+         <menus>
+             <Menu mnemonicParsing="false" text="Vagter">
+                 <items>
+                     <MenuItem mnemonicParsing="false" onAction="#seMineVagter" text="Mine vagter" />
+                 </items></Menu>
+            <Menu fx:id="logUd" mnemonicParsing="false" text="Min Konto">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Mine informationer" />
+                  <MenuItem mnemonicParsing="false" onAction="#logud" text="logUd" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+      <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="360.0" prefWidth="600.0">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="2.0" minWidth="2.0" prefWidth="2.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="93.0" minWidth="47.0" prefWidth="93.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="415.0" minWidth="10.0" prefWidth="323.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="5.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="140.0" prefWidth="140.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="129.0" minHeight="25.0" prefHeight="25.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="319.0" minHeight="25.0" prefHeight="25.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="273.0" minHeight="10.0" prefHeight="25.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="25.0" prefHeight="25.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="25.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="25.0" prefHeight="25.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="200.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="Fornavn" GridPane.columnIndex="1" />
+            <FlowPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4">
+               <children>
+                  <Button fx:id="passwordBtn" mnemonicParsing="false" onAction="#skiftPassword" prefHeight="25.0" prefWidth="140.0" text="Skift Passoword">
+                     <FlowPane.margin>
+                        <Insets />
+                     </FlowPane.margin></Button>
+               </children>
+            </FlowPane>
+            <Label text="Efternavn" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label text="Mobil TLF" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label text="Email" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="tlfNr" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <TextField fx:id="email" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <Label text="RoskildeID" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Button fx:id="redigerBtn" mnemonicParsing="false" onAction="#redigerInfo" prefHeight="25.0" prefWidth="140.0" text="Rediger" wrapText="true" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+            <TextField fx:id="navn" GridPane.columnIndex="2" />
+            <TextField fx:id="efternavn" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Button fx:id="gemBnt" mnemonicParsing="false" onAction="#gemInfo" prefHeight="25.0" prefWidth="140.0" text="Gem" GridPane.columnIndex="4" GridPane.rowIndex="7" />
+            <Label fx:id="personRoskildeID" prefHeight="17.0" prefWidth="367.0" text="XXXXXXXXX" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+            <Label text="Fødslesdato" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label fx:id="bdag" text="ÅÅÅÅ-MM-DD" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+         </children>
+      </GridPane>
+   </children>
+</VBox>
