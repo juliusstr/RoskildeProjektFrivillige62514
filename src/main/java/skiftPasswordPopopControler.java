@@ -19,7 +19,7 @@ public class skiftPasswordPopopControler {
 
     public void gem(ActionEvent actionEvent) {
         if (password1.getText().equals(password2.getText())){
-            if (Pattern.matches(RegisteringAfFriviligController.passwordRegex, password1.getText())){
+            if (Regex.matchPassword(password1.getText())){
                 person.setPassword(password1.getText());
                 stage.close();
             } else {

@@ -68,19 +68,19 @@ public class AnsvarligMineInformationerController {
     public void gemInfo(ActionEvent actionEvent) throws IOException {
         Person person = DatabaseLink.personHashMap.get(personRoskildeID.getText().split(" ")[0]);
         boolean bNavn  = true;
-        if (!Pattern.matches(RegisteringAfFriviligController.navnRegex, navn.getText())){
+        if (!Regex.matchNavn(navn.getText())){
             bNavn = false;
         }
         boolean bEfternavn = true;
-        if (!Pattern.matches(RegisteringAfFriviligController.efternavnRegex, efternavn.getText())){
+        if (!Regex.matchEfterNavn(efternavn.getText())){
             bEfternavn = false;
         }
         boolean bTlfNr = true;
-        if (!Pattern.matches(RegisteringAfFriviligController.tlfNrRegex, tlfNr.getText())){
+        if (!Regex.matchTlfNr(tlfNr.getText())){
             bTlfNr = false;
         }
         boolean bEMail = true;
-        if (!Pattern.matches(RegisteringAfFriviligController.eMailRegex, email.getText())){
+        if (!Regex.matchEMail(email.getText())){
             bEMail = false;
         }
 
