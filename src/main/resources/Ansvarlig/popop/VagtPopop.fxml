@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="317.0" prefWidth="509.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VagtPopopControler">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="317.0" prefWidth="509.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ansvarlig.popop.VagtPopopControler">
    <children>
       <GridPane prefHeight="322.0" prefWidth="524.0">
         <columnConstraints>
@@ -26,7 +26,7 @@
          <children>
             <Button mnemonicParsing="false" onAction="#tilbage" text="Tilbage" GridPane.columnIndex="1" GridPane.rowIndex="6" />
             <Button mnemonicParsing="false" onAction="#opretVagt" text="Opret" GridPane.columnIndex="3" GridPane.rowIndex="6" />
-            <Label alignment="CENTER" prefHeight="17.0" prefWidth="300.0" text="Opret Vagt" GridPane.columnIndex="2">
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="300.0" text="Opret vagt" GridPane.columnIndex="2">
                <font>
                   <Font size="18.0" />
                </font></Label>

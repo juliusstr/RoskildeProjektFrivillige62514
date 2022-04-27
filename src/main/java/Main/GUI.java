@@ -1,20 +1,22 @@
+package Main;
+
+import controller.*;
+
+import controller.ansvarlig.*;
+import controller.frivilig.FriviligHomepageController;
+import controller.frivilig.FriviligMineInformationerController;
+import controller.RegisteringAfFriviligController;
+import controller.frivilig.SeMineVagterController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Pos;
-import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
-import javafx.scene.control.Separator;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 
 import java.io.*;
-import java.net.URL;
-import java.util.HashMap;
 
 //todo lave fil navne som konstanter
 
@@ -22,6 +24,28 @@ import java.util.HashMap;
 
 public class GUI extends Application {
 
+    public static final String personMapPath = "Main.Person.map";
+    public static final String aktivitetListPath = "Aktivtet.list";
+
+    public static final String loginPath = "login.fxml";
+
+    public static final String FriviligHomepagePath = "Frivilig/FriviligHomepage.fxml";
+    public static final String AnsvarligHomepagePath = "Ansvarlig/AnsvarligHomepage.fxml";
+    public static final String FriviligMineInformationerPath= "Frivilig/FriviligMineInformationer.fxml";
+    public static final String AnsvarligMineInformationerPath = "Ansvarlig/AnsvarligMineInformationer.fxml";
+    public static final String AnsvarligVagterPath = "Ansvarlig/AnsvarligVagter.fxml";
+    public static final String FriviligSeMineVagterPath = "Frivilig/SeMineVagter.fxml";
+    public static final String AnsvarligSeMineVagterPath = "Ansvarlig/SeMineVagterAnsvarlig.fxml";
+    public static final String AnsvarligRedigereFriviligePath = "Ansvarlig/AnsvarligRedigereFrivilige.fxml";
+
+    public static final String registeringAfFriviligPath = "RegisteringAfFrivilig.fxml";
+
+    public static final String ansvarligPopopNyAktivitetPath = "Ansvarlig/popop/AktivitetPopop.fxml";
+    public static final String ansvarligPopopNyVagt = "Ansvarlig/popop/VagtPopop.fxml";
+    public static final String ansvarligPopopRedigerFriviligInformationer = "Ansvarlig/popop/AnsvarligRedigerFriviligInformationerPopop.fxml";
+    public static final String ansvarligPopopSkiftPassword = "Ansvarlig/popop/SkiftPasswordPopop.fxml";
+
+    public static final String friviligPopopSkiftPassword = "Frivilig/popop/FriviligSkiftPasswordPopop.fxml";
 
     public Stage stage;
 
@@ -33,7 +57,7 @@ public class GUI extends Application {
     public void start(Stage stage) throws Exception {
         this.stage=stage;
 
-        FXMLLoader loadrer = new FXMLLoader(getClass().getResource("login.fxml"));
+        FXMLLoader loadrer = new FXMLLoader(getClass().getClassLoader().getResource(loginPath));
         VBox box = loadrer.load();
         Scene logniSide = new Scene(box,box.getPrefWidth(), box.getPrefHeight());
         LoginController loginController = loadrer.getController();
@@ -41,22 +65,21 @@ public class GUI extends Application {
         stage.setScene(logniSide);
         stage.setResizable(false);
         stage.setOnCloseRequest(event -> {
-            DatabaseLink.savePersonData("person.ser");
-            DatabaseLink.saveAktivetetData("aktiviteter.ser");
+            DatabaseLink.savePersonData(personMapPath);
+            DatabaseLink.saveAktivetetData(aktivitetListPath);
         });
         stage.show();
     }
 
     public static void infoBox(String infoMessage, String titleBar) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        //alert.setTitle(titleBar);
         alert.setHeaderText(titleBar);
         alert.setContentText(infoMessage);
         alert.showAndWait();
     }
 
     public void setRegisteringAfFriviligScene() throws IOException {
-        FXMLLoader loadrer = new FXMLLoader(getClass().getResource("RegisteringAfFrivilig.fxml"));
+        FXMLLoader loadrer = new FXMLLoader(getClass().getClassLoader().getResource(registeringAfFriviligPath));
         VBox box = loadrer.load();
         RegisteringAfFriviligController registeringAfFriviligController = loadrer.getController();
         registeringAfFriviligController.setGUI(this);
@@ -65,7 +88,7 @@ public class GUI extends Application {
     }
 
     public void setFriviligHomepageScene(Person person) throws IOException {
-        FXMLLoader loadrer = new FXMLLoader(getClass().getResource("FriviligHomepage.fxml"));
+        FXMLLoader loadrer = new FXMLLoader(getClass().getClassLoader().getResource(FriviligHomepagePath));
         VBox box = loadrer.load();
         FriviligHomepageController friviligHomepageController = loadrer.getController();
         friviligHomepageController.setGui(this);
@@ -75,7 +98,7 @@ public class GUI extends Application {
     }
 
     public void setLoginScene() throws IOException {
-        FXMLLoader loadrer = new FXMLLoader(getClass().getResource("Login.fxml"));
+        FXMLLoader loadrer = new FXMLLoader(getClass().getClassLoader().getResource(loginPath));
         VBox box = loadrer.load();
         LoginController loginController = loadrer.getController();
         loginController.setGUI(this);
@@ -84,7 +107,7 @@ public class GUI extends Application {
     }
 
     public void setAnsvarligHomepageScene(Person person) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("AnsvarligHomepage.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(AnsvarligHomepagePath));
         VBox box = loader.load();
         AnsvarligHomepsgeController ansvarligHomepsgeController = loader.getController();
         ansvarligHomepsgeController.setGUI(this);
@@ -94,7 +117,7 @@ public class GUI extends Application {
     }
 
     public void setFriviligeInformationerScene(Person person) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("FriviligMineInformationer.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(FriviligMineInformationerPath));
         VBox box = loader.load();
         FriviligMineInformationerController friviligMineInformationerController = loader.getController();
         friviligMineInformationerController.setGUI(this);
@@ -106,7 +129,7 @@ public class GUI extends Application {
 
 
     public void setAnsvarligMineInformationer(Person person) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("AnsvarligMineInformationer.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(AnsvarligMineInformationerPath));
         VBox box = loader.load();
         AnsvarligMineInformationerController controller = loader.getController();
         controller.setGUI(this);
@@ -117,7 +140,7 @@ public class GUI extends Application {
     }
 
     public void setAktivtetAdminScene(Person person) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("AnsvarligVagter.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(AnsvarligVagterPath));
         VBox box = loader.load();
         AnsvarligVagterController controller = loader.getController();
         controller.setGUI(this);
@@ -128,7 +151,7 @@ public class GUI extends Application {
     }
 
     public void setfriviligMineVagterScene(Person person) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("SeMineVagter.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(FriviligSeMineVagterPath));
         VBox box = loader.load();
         SeMineVagterController controller = loader.getController();
 
@@ -141,7 +164,7 @@ public class GUI extends Application {
     }
 
     public void setSeMineVagterAnsvarlig(Person person) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("SeMineVagterAnsvarlig.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(AnsvarligSeMineVagterPath));
         VBox box = loader.load();
         SeMineVagterAnsvarligController controller = loader.getController();
 
@@ -154,7 +177,7 @@ public class GUI extends Application {
     }
 
     public void setSeFriviligAnsvarlig(Person person) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("AnsvarligRedigereFrivilige.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(AnsvarligRedigereFriviligePath));
         VBox box = loader.load();
         SeFriviligAnsvarligController controller = loader.getController();
 

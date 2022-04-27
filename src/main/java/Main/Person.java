@@ -1,7 +1,6 @@
+package Main;
+
 import java.io.Serializable;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
 public class Person implements Serializable {
     private String navn;

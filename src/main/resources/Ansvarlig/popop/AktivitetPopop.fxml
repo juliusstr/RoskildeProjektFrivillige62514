@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="317.0" prefWidth="509.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AktivitetPopopControler">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="317.0" prefWidth="509.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ansvarlig.popop.AktivitetPopopControler">
    <children>
       <GridPane prefHeight="322.0" prefWidth="524.0">
         <columnConstraints>
@@ -25,7 +25,7 @@
          <children>
             <Button mnemonicParsing="false" onAction="#tilbage" text="Tilbage" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <Button mnemonicParsing="false" onAction="#opretAktivtet" text="Opret" GridPane.columnIndex="3" GridPane.rowIndex="5" />
-            <Label alignment="CENTER" prefHeight="17.0" prefWidth="300.0" text="Opret Aktivitet" GridPane.columnIndex="2">
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="300.0" text="Opret aktivitet" GridPane.columnIndex="2">
                <font>
                   <Font size="18.0" />
                </font></Label>

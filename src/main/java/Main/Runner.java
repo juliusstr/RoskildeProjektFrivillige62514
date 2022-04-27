@@ -1,6 +1,7 @@
-import java.io.FileInputStream;
-import java.io.ObjectInputStream;
-import java.util.HashMap;
+package Main;
+
+import Main.DatabaseLink;
+import Main.GUI;
 
 public class Runner {
 

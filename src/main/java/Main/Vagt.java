@@ -1,3 +1,8 @@
+package Main;
+
+import Main.Aktivitet;
+import Main.DatabaseLink;
+
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
