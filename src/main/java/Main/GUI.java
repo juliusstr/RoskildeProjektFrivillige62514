@@ -18,33 +18,35 @@ import javafx.stage.Stage;
 
 import java.io.*;
 
-//todo lave fil navne som konstanter
-
-//todo flyt fxml til mapper så det er nemmer at fidne rundt mellem frivilige og ansvarlige
-
 public class GUI extends Application {
 
+    //----data paths
     public static final String personMapPath = "Person.map";
     public static final String aktivitetListPath = "Aktivtet.list";
 
+    //----fælles fxml
     public static final String loginPath = "login.fxml";
-
-    public static final String FriviligHomepagePath = "Frivilig/FriviligHomepage.fxml";
-    public static final String AnsvarligHomepagePath = "Ansvarlig/AnsvarligHomepage.fxml";
-    public static final String FriviligMineInformationerPath= "Frivilig/FriviligMineInformationer.fxml";
-    public static final String AnsvarligMineInformationerPath = "Ansvarlig/AnsvarligMineInformationer.fxml";
-    public static final String AnsvarligVagterPath = "Ansvarlig/AnsvarligVagter.fxml";
-    public static final String FriviligSeMineVagterPath = "Frivilig/SeMineVagter.fxml";
-    public static final String AnsvarligSeMineVagterPath = "Ansvarlig/SeMineVagterAnsvarlig.fxml";
-    public static final String AnsvarligRedigereFriviligePath = "Ansvarlig/AnsvarligRedigereFrivilige.fxml";
-
     public static final String registeringAfFriviligPath = "RegisteringAfFrivilig.fxml";
 
+
+    //----Ansvarlig fxml
+    public static final String AnsvarligSeMineVagterPath = "Ansvarlig/SeMineVagterAnsvarlig.fxml";
+    public static final String AnsvarligRedigereFriviligePath = "Ansvarlig/AnsvarligRedigereFrivilige.fxml";
+    public static final String AnsvarligHomepagePath = "Ansvarlig/AnsvarligHomepage.fxml";
+    public static final String AnsvarligMineInformationerPath = "Ansvarlig/AnsvarligMineInformationer.fxml";
+    public static final String AnsvarligVagterPath = "Ansvarlig/AnsvarligVagter.fxml";
+    //--Ansvarlig popop fxml
     public static final String ansvarligPopopNyAktivitetPath = "Ansvarlig/popop/AktivitetPopop.fxml";
     public static final String ansvarligPopopNyVagt = "Ansvarlig/popop/VagtPopop.fxml";
     public static final String ansvarligPopopRedigerFriviligInformationer = "Ansvarlig/popop/AnsvarligRedigerFriviligInformationerPopop.fxml";
     public static final String ansvarligPopopSkiftPassword = "Ansvarlig/popop/SkiftPasswordPopop.fxml";
 
+
+    //----Frivilige fxml
+    public static final String FriviligHomepagePath = "Frivilig/FriviligHomepage.fxml";
+    public static final String FriviligMineInformationerPath= "Frivilig/FriviligMineInformationer.fxml";
+    public static final String FriviligSeMineVagterPath = "Frivilig/SeMineVagter.fxml";
+    //--Frivilig popop fxml
     public static final String friviligPopopSkiftPassword = "Frivilig/popop/FriviligSkiftPasswordPopop.fxml";
 
     public Stage stage;
@@ -64,6 +66,9 @@ public class GUI extends Application {
         loginController.setGUI(this);
         stage.setScene(logniSide);
         stage.setResizable(false);
+
+        DatabaseLink.loadPersonData(personMapPath);
+        DatabaseLink.loadAktivter(aktivitetListPath);
         stage.setOnCloseRequest(event -> {
             DatabaseLink.savePersonData(personMapPath);
             DatabaseLink.saveAktivetetData(aktivitetListPath);
