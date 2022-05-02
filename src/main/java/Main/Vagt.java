@@ -9,7 +9,6 @@ import java.util.Calendar;
 import java.util.Locale;
 
 public class Vagt implements Serializable {
-    private static int nextId = 1;
     private int id;
     private String frivillig;
     private Calendar startTidspunkt;
@@ -20,9 +19,8 @@ public class Vagt implements Serializable {
         this.frivillig = frivillig;
         this.startTidspunkt = startTidspunkt;
         this.slutTidspunkt = slutTidspunkt;
-        id = nextId;
+        id = getNextId();
         this.aktivitet = aktivitet;
-        nextId++;
     }
 
     public String getFrivillig() {
@@ -71,6 +69,19 @@ public class Vagt implements Serializable {
 
     public String getFriviligPerson(){
         return DatabaseLink.getPersonFromID(frivillig).print();
+    }
+
+    private int getNextId(){
+        int temp = 0;
+        for (int i = 0; i < DatabaseLink.aktivteter.size(); i++) {
+            for (int j = 0; j < DatabaseLink.aktivteter.get(i).getVagter().size(); j++) {
+                if (temp < DatabaseLink.aktivteter.get(i).getVagter().get(j).getId()){
+                    temp = DatabaseLink.aktivteter.get(i).getVagter().get(j).getId();
+                }
+            }
+        }
+        temp++;
+        return temp;
     }
 
 }
