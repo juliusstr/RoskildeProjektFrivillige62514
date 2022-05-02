@@ -1,11 +1,17 @@
 @startuml
+skinparam classAttributeIconSize 0
+left to right direction
+
 package resources{
     class login_fxml
+    class RegisteringAfFrivilig_fxml
+    package frivilig{
+        class FriviligMineInformationer_fxml
+    }
 }
 
 package Controller {
     class LoginController
-
     class RegisteringAfFriviligController
     package Frivilig{
         class FriviligMineInformationerController
@@ -20,6 +26,7 @@ package Controller {
         }
     }
 }
+
 package main{
     class Runner
 }
@@ -37,8 +44,23 @@ package Data {
 }
 
 Runner --> GUI
+
+UI ..> Data : <<Import>>
+Controller ..> Data : <<Import>>
+
 GUI --> login_fxml
 login_fxml --> LoginController
-LoginController --> GUI : "gui"
+LoginController --> GUI : " -gui"
 GUI ..> LoginController : "<<use>>"
+
+GUI --> RegisteringAfFrivilig_fxml
+RegisteringAfFrivilig_fxml --> RegisteringAfFriviligController
+RegisteringAfFriviligController --> GUI : " -gui"
+GUI ..> RegisteringAfFriviligController : "<<use>>"
+
+GUI --> FriviligMineInformationer_fxml
+FriviligMineInformationer_fxml --> FriviligMineInformationerController
+FriviligMineInformationerController --> GUI : " -gui"
+GUI ..> FriviligMineInformationerController : "<<use>>"
+
 @enduml
