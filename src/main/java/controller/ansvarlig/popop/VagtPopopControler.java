@@ -32,10 +32,11 @@ public class VagtPopopControler {
             }
         }
 
-        for (int i = 0; i < 24; i++) {// todo skriv kl på en bedere måde
+        for (int i = 0; i < 24; i++) {
             for (int j = 0; j < 4; j++) {
-                startTidspunktChoiceBox.getItems().add(""+i+":"+j*15);
-                slutTidspunktChoiceBox.getItems().add(""+i+":"+j*15);
+                String temp = String.format("%02d:%02d" , i , (j*15));
+                startTidspunktChoiceBox.getItems().add(temp);
+                slutTidspunktChoiceBox.getItems().add(temp);
             }
         }
 
