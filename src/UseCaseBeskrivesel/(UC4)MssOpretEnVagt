@@ -1,0 +1,19 @@
+Main Success Scenario for at oprette en vagt:
+
+Prereq: Bruger er logget ind. (UC1)
+
+1. Application viser homepage siden.
+2. Brugeren klikker på Aktiviteter menuen og vælger Aktivitet admin på menu listen.
+3. Application viser Aktivitet admin siden.
+4. Brugeren vælger en aktivitet der passer til formålet, hvis der ikke er en passende aktivitet oprettes den.
+5. Brugeren klikker på opret vagt knappen
+6. application åbner opret vagt pop op vinduet.
+7. Brugeren udfylder pop op vinduet - Start dato, start tidspunkt, slut dato, slut tidspunkt, tildelere vagten til en frivillig og klikkker på opret knappen
+8. Application gemmer vagten og application lukker pop op vinduet, aktiviteten og vagten vises nu i Aktivitet admin siden.
+
+
+2a.1 Brugeren kan ikke se Aktiviteter menuen - Brugeren er ikke en adminstrator og har ikke tilladesle til at opretter aktiviteter og vagter.
+4a.1 Opret en Aktivitet - Brugeren klikker på opret aktivitet knappen.
+4a.2 Application åbner opret aktivitet pop op vinduet.
+4a.3 Brugeren udfylder pop op vinduet - Titel, vælger ansvarlig, lokation og beskrivelse
+

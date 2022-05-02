@@ -1,0 +1,7 @@
+Main Success Scenario for at se mine informationer:
+
+Prereq: Bruger er logget ind. (UC1)
+
+1. Application viser homepage siden
+2. Brugeren klikker på Min konto menuen og vælger mine informationer på menu listen.
+3. Application viser mine informationer siden.

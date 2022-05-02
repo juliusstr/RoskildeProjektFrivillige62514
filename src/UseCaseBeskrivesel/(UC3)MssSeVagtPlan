@@ -5,3 +5,4 @@ Prereq: Bruger er logget ind. (UC1)
 1. Application viser homepage siden.
 2. Brugeren klikker på Vagter menuen og vælger mine vagter på menu listen.
 3. Application viser min vagter siden.
+4. Brugeren har så mulighed for at søge og sortere efter: Lokation, Vagt Start, Vagt slut, Opgaver og Ansvarlig

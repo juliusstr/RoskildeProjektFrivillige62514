@@ -10,5 +10,5 @@ Main Success Scenario for at registering som frivillig:
 
 
 5a.1 Ugyldigt bruger information - Systmet åbner en dialogbox somforklare brugen hvilket indstastnings fejl af oplysninger der er begået.
-5b.2 Systemet sletter password og gentag password felterne.
+5a.2 Systemet sletter password og gentag password felterne.
 

@@ -1,0 +1,10 @@
+Main Success Scenario for at redigere kontakt oplysninger:
+
+Prereq: Bruger er logget ind. (UC1)
+
+Prereq: Brugeren er på mine informationer siden. (UC7)
+
+1. Brugeren klikker på redigere knappen
+2. Applicationen lader nu brugeren redigere i sine oplysninger: Fornavn, Efternavn, mobil tlf, email
+3. Brugeren redigere i sine oplysninger og klikker på knappen gem.
+4. Applicationen gemmer de redigeret oplysninger og låser felterne igen.

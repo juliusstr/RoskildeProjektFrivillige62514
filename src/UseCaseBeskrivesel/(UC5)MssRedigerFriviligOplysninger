@@ -1,0 +1,17 @@
+Main Success Scenario for at redigere frivilligs oplysninger:
+
+Prereq: Bruger er logget ind. (UC1)
+
+1. Application viser homepage siden
+2. Brugeren klikker på Frivillige menuen og vælger Redigere i frivillige informationer på menu listen.
+3. Application viser Redigere i frivillige informationer siden.
+4. Brugeren vælger den person fra listen som brugeren vil redigere i og klikker på rediger knappen.
+5. Applicationen åbner redigere pop op vinduet.
+6. Brugeren redigere i de oplysninger som skal redigeres: Fornavn, Efternavn, mobil tlf, email, fødelsedato, password og klikker på knappen gem.
+7. Applicationen gemmer ændrigerne og viser Redigere i frivillige informationer siden.
+
+
+
+2a.1 Brugeren kan ikke se Frivillige menuen - Brugeren er ikke en adminstrator og har ikke tilladesle til at Redigere i frivillige informationer.
+4a.1 personen er ikke på listen - brugeren er ikke registret som bruger.
+4a.2 opret personen - (UC2)
