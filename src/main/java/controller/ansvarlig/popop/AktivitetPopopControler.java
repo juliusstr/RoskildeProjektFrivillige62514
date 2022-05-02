@@ -50,7 +50,7 @@ public class AktivitetPopopControler {
         String ansvarligRosId = "";
         boolean ansvarligB = false;
         String ansvarligS = (String) ansvarligeListe.getValue();
-        if (!(ansvarligS.equals("") || ansvarligS == null)){
+        if (!(ansvarligS == null || ansvarligS.equals(""))){
             ansvarligRosId = ansvarligS.split("-")[1].substring(1);
             ansvarligB = true;
         }
@@ -62,7 +62,26 @@ public class AktivitetPopopControler {
             ansvarligVagterController.done();
             stage.close();
         }
-        //todo skriv fejl
+
+        String erroS = "";
+
+        if (!titelB){
+            erroS += "Fejl i Titel - Mangler at udfylde Titel \n\r";
+        }
+        if (!beskrivelseB){
+            erroS += "Fejl i Beskrivelse - Mangler at udfylde Beskrivelse\n\r";
+        }
+        if (!lokationB){
+            erroS += "Fejl i Lokation - Mangler at udfylde Lokation\n\r";
+        }
+        if (!ansvarligB){
+            erroS += "Fejl i Asvarlig - Mangler at udfylde Ansvarlig \n\r";
+        }
+
+        if (!erroS.equals("")){
+            GUI.infoBox(erroS,"Fejl i input");
+        }
+
 
     }
 

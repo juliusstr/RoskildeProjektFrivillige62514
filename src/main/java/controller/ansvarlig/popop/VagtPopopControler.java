@@ -1,9 +1,6 @@
 package controller.ansvarlig.popop;
 
-import Main.Aktivitet;
-import Main.DatabaseLink;
-import Main.Person;
-import Main.Vagt;
+import Main.*;
 import controller.ansvarlig.AnsvarligVagterController;
 import javafx.event.ActionEvent;
 import javafx.scene.control.ChoiceBox;
@@ -49,14 +46,28 @@ public class VagtPopopControler {
 
     public void opretVagt(ActionEvent actionEvent) {
         boolean ready = true;
-        if (startTidspunktChoiceBox.getValue()==null)
+        String erroS ="";
+        if (startTidspunktChoiceBox.getValue()==null){
             ready = false;
-        if (startDatoDatePicker.getValue()== null)
+            erroS += "Intet starttidspunkt valgt\n\r";
+        }
+
+        if (startDatoDatePicker.getValue()== null){
             ready = false;
-        if (slutTidspunktChoiceBox.getValue() == null)
+            erroS += "Ingen startDato valgt\n\r";
+        }
+        if (slutTidspunktChoiceBox.getValue() == null){
             ready = false;
-        if (slutDatoDatePicker.getValue() == null)
+            erroS += "Intet starttidspunkt valgt\n\r";
+        }
+        if (slutDatoDatePicker.getValue() == null) {
             ready = false;
+            erroS += "Ingen startDato valgt\n\r";
+        }
+        if (friviligChoiceBox.getValue()== null) {
+            ready = false;
+            erroS += "Ingen frivilig valgt\n\r";
+        }
 
         if (ready) {
             System.out.println(DatabaseLink.aktivteter.get(aktivitet.getId() - 1).getVagter().size());
@@ -74,18 +85,14 @@ public class VagtPopopControler {
             slutTidspunkt = Calendar.getInstance();
             slutTidspunkt.set(slutDatoDatePicker.getValue().getYear(), slutDatoDatePicker.getValue().getMonth().getValue(), slutDatoDatePicker.getValue().getDayOfMonth(), hh, mm);
             String firvilig;
-            if (friviligChoiceBox.getValue()!= null) {
-                firvilig = friviligChoiceBox.getValue().toString().split("-")[1].substring(1);
-            } else {
-                firvilig = "x";
-            }
+            firvilig = friviligChoiceBox.getValue().toString().split("-")[1].substring(1);
             DatabaseLink.aktivteter.get(aktivitet.getId() - 1).addVagt(new Vagt(firvilig, startTidspunkt, slutTidspunkt,aktivitet));
             ansvarligVagterController.loadVagter();
             System.out.println("ja");
             System.out.println(DatabaseLink.aktivteter.get(aktivitet.getId() - 1).getVagter().size());
             stage.close();
         } else {
-            //todo informer om fejl
+            GUI.infoBox(erroS, "FEJL");
         }
     }
 }
