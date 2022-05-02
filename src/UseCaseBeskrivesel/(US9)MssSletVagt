@@ -1,0 +1,12 @@
+Main Success Scenario for at slette en vagt:
+
+Prereq: Bruger er logget ind. (UC1)
+
+1. Application viser homepage siden
+2. Brugeren klikker på Frivillige menuen og vælger Redigere i frivillige informationer på menu listen.
+3. Application viser Redigere i frivillige informationer siden.
+4. Brugeren markere den brugere som skal slettes og klikker på slet bruger knappen.
+5. Applicationen åbner slet brugere pop op vinduet
+6. Brugeren skal vælge mellem ok og cancel - ok for at slette brugeren og cancel for at annulere handligen.
+
+2a.1 Brugeren kan ikke se Frivillige menuen - Brugeren er ikke en adminstrator og har ikke tilladesle til at Redigere/slette i frivillige informationer.
