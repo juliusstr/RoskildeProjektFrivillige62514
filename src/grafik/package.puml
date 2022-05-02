@@ -1,0 +1,44 @@
+@startuml
+package resources{
+    class login_fxml
+}
+
+package Controller {
+    class LoginController
+
+    class RegisteringAfFriviligController
+    package Frivilig{
+        class FriviligMineInformationerController
+        package popop1{
+            class FriviligFskiftPasswordPopopControler
+        }
+    }
+    package Ansvarlig{
+        class AnsvarligMineInformationerController
+        package popop2{
+            class skiftPasswordPopopControler
+        }
+    }
+}
+package main{
+    class Runner
+}
+
+package UI {
+    class GUI
+}
+
+package Data {
+    class DatabaseLink
+    class Aktivitet
+    class Person
+    class Regex
+    class Vagt
+}
+
+Runner --> GUI
+GUI --> login_fxml
+login_fxml --> LoginController
+LoginController --> GUI : "gui"
+GUI ..> LoginController : "<<use>>"
+@enduml
