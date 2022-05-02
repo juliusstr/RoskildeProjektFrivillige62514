@@ -33,12 +33,12 @@ public class Vagt implements Serializable {
     }
 
     public String getStartTidspunkt(){
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.GERMANY);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.GERMANY);
         return sdf.format(startTidspunkt.getTime());
     }
 
     public String getSlutTidpunkt(){
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.GERMANY);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.GERMANY);
         return sdf.format(slutTidspunkt.getTime());
     }
 
