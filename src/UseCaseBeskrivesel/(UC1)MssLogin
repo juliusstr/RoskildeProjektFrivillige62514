@@ -2,7 +2,7 @@ Main Success Scenario for at login:
 
 1 Brugeren Kører application (RoskildeProjekt)
 2 Application viser Login siden.
-3 Brugeren Indtast login oplysninger.
+3 Brugeren Indtast login oplysninger og klikker på knappen login.
 4 Brugeren er logget ind i application (RoskildeProjekt) og application viser Homepage.
 
 3a.1 Ugyldigt login informationer - Systemet viser at brugernavn eller password er ugyldigt.
