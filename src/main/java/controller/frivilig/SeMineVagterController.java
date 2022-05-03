@@ -58,7 +58,6 @@ public class SeMineVagterController {
         vagtListe.setPlaceholder( new Label("Der er ingen vager at se her.\nPrøv evt. at søge på noget andet."));
 
         ArrayList<Vagt> vagter = DatabaseLink.getVagterFraPerson(person);
-        System.out.println("der er " + vagter.size() + " vagter");
         for (int i = 0; i < vagter.size(); i++) {
             vagtListe.getItems().add(vagter.get(i));
         }

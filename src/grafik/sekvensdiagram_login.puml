@@ -1,0 +1,55 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+
+
+
+actor User as user
+participant UI
+participant LoginController
+participant DatabaseLink
+participant GUI
+
+
+user --> UI : Trykker login
+activate UI
+
+
+
+UI --> LoginController : Login
+activate LoginController
+activate LoginController
+
+LoginController --> DatabaseLink : personHashMap.get(RoskildeId)
+activate DatabaseLink
+DatabaseLink --> LoginController :  Return person
+deactivate  DatabaseLink
+
+hnote over LoginController : Tjekker om login\ndata er korekt
+
+alt Brugerlogin godkendt
+
+    LoginController --> GUI
+    deactivate LoginController
+    activate GUI
+    GUI --> UI : Sætter scene til homepage
+
+    deactivate GUI
+     UI --> user : Homepage vises
+else Brugerlogin ikke godkendt
+    LoginController --> GUI
+    deactivate LoginController
+    activate GUI
+    GUI --> UI : Åbner dialog boks med fejl meddeles
+    deactivate GUI
+    UI --> user : Dialog boks åbner
+end
+
+deactivate UI
+
+
+
+
+
+
+@enduml

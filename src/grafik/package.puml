@@ -19,7 +19,7 @@ package resources{
     }
 }
 
-package Controller {
+package Controller{
     class LoginController
     class RegisteringAfFriviligController
     package Frivilig{
@@ -57,35 +57,40 @@ Runner --> GUI
 UI ..> Data : <<Import>>
 Controller ..> Data : <<Import>>
 
-GUI --> login_fxml
-login_fxml --> LoginController
-LoginController --> GUI : " -gui"
-GUI ..> LoginController : "<<use>>"
+GUI --> resources
+resources --> Controller
+Controller --> GUI : " -gui"
+GUI ..> Controller : "<<use>>"
 
-GUI --> RegisteringAfFrivilig_fxml
-RegisteringAfFrivilig_fxml --> RegisteringAfFriviligController
-RegisteringAfFriviligController --> GUI : " -gui"
-GUI ..> RegisteringAfFriviligController : "<<use>>"
+'GUI --> login_fxml
+'login_fxml --> LoginController
+'LoginController --> GUI : " -gui"
+'GUI ..> LoginController : "<<use>>"
 
-GUI --> FriviligMineInformationer_fxml
-FriviligMineInformationer_fxml --> FriviligMineInformationerController
-FriviligMineInformationerController --> GUI : " -gui"
-GUI ..> FriviligMineInformationerController : "<<use>>"
+'GUI --> RegisteringAfFrivilig_fxml
+'RegisteringAfFrivilig_fxml --> RegisteringAfFriviligController
+'RegisteringAfFriviligController --> GUI : " -gui"
+'GUI ..> RegisteringAfFriviligController : "<<use>>"
 
-FriviligMineInformationerController --> FriviligSkiftPasswordPopop_fxml
-FriviligSkiftPasswordPopop_fxml --> FriviligFskiftPasswordPopopControler
-FriviligFskiftPasswordPopopControler --> FriviligMineInformationerController : " -FriviligMineInformationerController"
-FriviligMineInformationerController ..> FriviligFskiftPasswordPopopControler : "<<use>>"
+'GUI --> FriviligMineInformationer_fxml
+'FriviligMineInformationer_fxml --> FriviligMineInformationerController
+'FriviligMineInformationerController --> GUI : " -gui"
+'GUI ..> FriviligMineInformationerController : "<<use>>"
 
-GUI --> AnsvarligMineInformationer_fxml
-AnsvarligMineInformationer_fxml --> AnsvarligMineInformationerController
-AnsvarligMineInformationerController --> GUI : " -gui"
-GUI ..> AnsvarligMineInformationerController : "<<use>>"
+'FriviligMineInformationerController --> FriviligSkiftPasswordPopop_fxml
+'FriviligSkiftPasswordPopop_fxml --> FriviligFskiftPasswordPopopControler
+'FriviligFskiftPasswordPopopControler --> FriviligMineInformationerController : " -FriviligMineInformationerController"
+'FriviligMineInformationerController ..> FriviligFskiftPasswordPopopControler : "<<use>>"
 
-AnsvarligMineInformationerController --> SkiftPasswordPopop_fxml
-SkiftPasswordPopop_fxml --> skiftPasswordPopopControler
-skiftPasswordPopopControler --> AnsvarligMineInformationerController : " -skiftPasswordPopopControler"
-AnsvarligMineInformationerController ..> skiftPasswordPopopControler : "<<use>>"
+'GUI --> AnsvarligMineInformationer_fxml
+'AnsvarligMineInformationer_fxml --> AnsvarligMineInformationerController
+'AnsvarligMineInformationerController --> GUI : " -gui"
+'GUI ..> AnsvarligMineInformationerController : "<<use>>"
+
+'AnsvarligMineInformationerController --> SkiftPasswordPopop_fxml
+'SkiftPasswordPopop_fxml --> skiftPasswordPopopControler
+'skiftPasswordPopopControler --> AnsvarligMineInformationerController : " -skiftPasswordPopopControler"
+'AnsvarligMineInformationerController ..> skiftPasswordPopopControler : "<<use>>"
 
 
 @enduml

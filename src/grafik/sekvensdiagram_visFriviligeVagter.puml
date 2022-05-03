@@ -1,0 +1,45 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+
+actor Frivilig as user
+participant UI
+participant GUI
+participant SeMineVagterController
+participant DatabaseLink
+participant Aktivitet
+
+user --> UI : Tryker på Se vagter
+activate UI
+
+UI --> GUI : vis SeMineVagter
+activate GUI
+
+GUI --> SeMineVagterController : Preload
+
+activate SeMineVagterController
+hnote over SeMineVagterController : Sætter tabeller\nop scene
+SeMineVagterController --> DatabaseLink : getVagetFraPerson(person)
+activate DatabaseLink
+loop For alle aktiviteter
+    DatabaseLink --> Aktivitet : getVagter()
+    activate Aktivitet
+    Aktivitet --> DatabaseLink : returnere vagter
+    deactivate Aktivitet
+end
+DatabaseLink --> SeMineVagterController : returnere vagter
+deactivate DatabaseLink
+hnote over SeMineVagterController : Ligger vagter i tabel
+SeMineVagterController --> GUI
+deactivate SeMineVagterController
+GUI --> UI : Sætter scene til SeMineVagter
+deactivate GUI
+UI --> user : SeMineVagter vises
+deactivate UI
+
+
+
+
+
+
+@enduml
