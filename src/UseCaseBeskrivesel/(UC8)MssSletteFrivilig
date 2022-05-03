@@ -1,4 +1,16 @@
 Main Success Scenario for at slette frivillig:
 
 
-????
+Prereq: Bruger er logget ind. (UC1)
+
+1. Application viser homepage siden.
+2. Brugeren klikker på Frivillige menuen og vælger Redigere i frivillige informationer på menu listen.
+3. Application viser Redigere i frivillige informationer siden.
+4. Brugeren vælger den person fra listen som brugeren vil slette  og klikker på slet bruger knappen.
+5. Application åbner sletning a bruger pop op vinduet som viser information om den bruger som man har valgt fra listen
+6. Brugeren klikker på ok knappen
+7. Application sletter brugeren og lukker pop op vinduet - og gemmer.
+
+
+2a.1 Brugeren kan ikke se Frivillige menuen - Brugeren er ikke en adminstrator og har ikke tilladesle til at Redigere i frivillige informationer.
+6a.1 Brugeren klikker på cancel - pop op vinduet lukker og den valgte bruger slettes ikke.
