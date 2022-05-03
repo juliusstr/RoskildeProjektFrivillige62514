@@ -7,6 +7,15 @@ package resources{
     class RegisteringAfFrivilig_fxml
     package frivilig{
         class FriviligMineInformationer_fxml
+        package popop1_1 {
+            class FriviligSkiftPasswordPopop_fxml
+        }
+    }
+    package ansvarlig {
+        class AnsvarligMineInformationer_fxml
+        package popop2_2{
+            class SkiftPasswordPopop_fxml
+        }
     }
 }
 
@@ -62,5 +71,21 @@ GUI --> FriviligMineInformationer_fxml
 FriviligMineInformationer_fxml --> FriviligMineInformationerController
 FriviligMineInformationerController --> GUI : " -gui"
 GUI ..> FriviligMineInformationerController : "<<use>>"
+
+FriviligMineInformationerController --> FriviligSkiftPasswordPopop_fxml
+FriviligSkiftPasswordPopop_fxml --> FriviligFskiftPasswordPopopControler
+FriviligFskiftPasswordPopopControler --> FriviligMineInformationerController : " -FriviligMineInformationerController"
+FriviligMineInformationerController ..> FriviligFskiftPasswordPopopControler : "<<use>>"
+
+GUI --> AnsvarligMineInformationer_fxml
+AnsvarligMineInformationer_fxml --> AnsvarligMineInformationerController
+AnsvarligMineInformationerController --> GUI : " -gui"
+GUI ..> AnsvarligMineInformationerController : "<<use>>"
+
+AnsvarligMineInformationerController --> SkiftPasswordPopop_fxml
+SkiftPasswordPopop_fxml --> skiftPasswordPopopControler
+skiftPasswordPopopControler --> AnsvarligMineInformationerController : " -skiftPasswordPopopControler"
+AnsvarligMineInformationerController ..> skiftPasswordPopopControler : "<<use>>"
+
 
 @enduml
