@@ -21,11 +21,9 @@ public class DatabaseLink {
         }catch (Exception e){
             e.printStackTrace();
             personHashMap = new HashMap<>();
-            personHashMap.put("F1", new Person("Bob", "Jensen", "12345678" , "bob@fake.com", "1900-07-18", "F1","1"));
-            personHashMap.put("A1", new Person("Bob", "Jensen", "12345678" , "bob@fake.com", "1900-07-18", "A1","1"));
-            personHashMap.put("A2", new Person("Jens", "Jensen", "12345678" , "bob@fake.com", "1900-07-18", "A2","1"));
-            personHashMap.put("A3", new Person("Erik", "Jensen", "12345678" , "bob@fake.com", "1900-07-18", "A3","1"));
-            System.out.println("map.ser findes ikke. så der laves 2 nyte bruger med id F1 og A1. begge har pasword \"1\"");
+            personHashMap.put("F2", new Person("Jens", "Hansen", "87654321" , "Jens@fake.com", "1984-04-12", "F2","1"));
+            personHashMap.put("A1", new Person("Bob", "Jensen", "12345678" , "bob@fake.com", "1979-08-25", "A1","1"));
+            System.err.println("kunne ikke loade perosn data. Der er lavet 2");
             return false;
         }
         return true;
@@ -39,7 +37,7 @@ public class DatabaseLink {
             oos.close();
         } catch (Exception e){
             e.printStackTrace();
-            System.out.println("Kunne ikke gemme per fil. Du er fucked");
+            System.err.println("Kunne ikke gemme person fil.");
             return false;
         }
         return true;
@@ -53,7 +51,7 @@ public class DatabaseLink {
         } catch (Exception e){
             e.printStackTrace();
             aktivteter = new ArrayList<>();
-            System.out.println("Kunne ikke loade akt fil der er nu ingen akt");
+            System.err.println("Kunne ikke loade aktivtet fil.");
             return false;
         }
         return true;
@@ -67,7 +65,7 @@ public class DatabaseLink {
             oos.close();
         } catch (Exception e){
             e.printStackTrace();
-            System.out.println("Kunne ikke gemme akt fil. Du er fucked");
+            System.err.println("Kunne ikke gemme aktivtet fil.");
             return false;
         }
         return true;

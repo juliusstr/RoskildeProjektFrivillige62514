@@ -11,16 +11,16 @@ participant DatabaseLink
 participant GUI
 
 
-user --> UI : Trykker login
+user -> UI : Trykker login
 activate UI
 
 
 
-UI --> LoginController : Login
+UI -> LoginController : Login
 activate LoginController
 activate LoginController
 
-LoginController --> DatabaseLink : personHashMap.get(RoskildeId)
+LoginController -> DatabaseLink : personHashMap.get(RoskildeId)
 activate DatabaseLink
 DatabaseLink --> LoginController :  Return person
 deactivate  DatabaseLink
@@ -29,7 +29,7 @@ hnote over LoginController : Tjekker om login\ndata er korekt
 
 alt Brugerlogin godkendt
 
-    LoginController --> GUI
+    LoginController -> GUI
     deactivate LoginController
     activate GUI
     GUI --> UI : Sætter scene til homepage
@@ -37,7 +37,7 @@ alt Brugerlogin godkendt
     deactivate GUI
      UI --> user : Homepage vises
 else Brugerlogin ikke godkendt
-    LoginController --> GUI
+    LoginController -> GUI
     deactivate LoginController
     activate GUI
     GUI --> UI : Åbner dialog boks med fejl meddeles

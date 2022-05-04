@@ -9,20 +9,20 @@ participant SeMineVagterController
 participant DatabaseLink
 participant Aktivitet
 
-user --> UI : Tryker på Se vagter
+user -> UI : Tryker på Se vagter
 activate UI
 
-UI --> GUI : vis SeMineVagter
+UI -> GUI : vis SeMineVagter
 activate GUI
 
-GUI --> SeMineVagterController : Preload
+GUI -> SeMineVagterController : Preload
 
 activate SeMineVagterController
 hnote over SeMineVagterController : Sætter tabeller\nop scene
-SeMineVagterController --> DatabaseLink : getVagetFraPerson(person)
+SeMineVagterController -> DatabaseLink : getVagetFraPerson(person)
 activate DatabaseLink
 loop For alle aktiviteter
-    DatabaseLink --> Aktivitet : getVagter()
+    DatabaseLink -> Aktivitet : getVagter()
     activate Aktivitet
     Aktivitet --> DatabaseLink : returnere vagter
     deactivate Aktivitet
