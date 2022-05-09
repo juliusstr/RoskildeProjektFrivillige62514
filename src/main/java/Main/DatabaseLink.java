@@ -23,7 +23,7 @@ public class DatabaseLink {
             personHashMap = new HashMap<>();
             personHashMap.put("F2", new Person("Jens", "Hansen", "87654321" , "Jens@fake.com", "1984-04-12", "F2","1"));
             personHashMap.put("A1", new Person("Bob", "Jensen", "12345678" , "bob@fake.com", "1979-08-25", "A1","1"));
-            System.err.println("kunne ikke loade perosn data. Der er lavet 2");
+            System.err.println("kunne ikke loade perosn data. Der er lavet 2 person er med A1 og F2 kode \"1\"");
             return false;
         }
         return true;

@@ -4,6 +4,7 @@
 
 actor Frivilig as user
 participant UI
+participant "nuværende scene's\nControler" as controller
 participant GUI
 participant SeMineVagterController
 participant DatabaseLink
@@ -12,7 +13,12 @@ participant Aktivitet
 user -> UI : Tryker på Se vagter
 activate UI
 
-UI -> GUI : vis SeMineVagter
+
+UI -> controller : vis SeMineVagter
+activate controller
+controller -> GUI : vis SeMineVagter
+deactivate controller
+
 activate GUI
 
 GUI -> SeMineVagterController : Preload
